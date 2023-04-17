@@ -1,0 +1,1135 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Heart Disease Prediction &#8212; My sample book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Heart Disease Prediction';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/Picsart_23-03-13_18-06-10-039.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/Picsart_23-03-13_18-06-10-039.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Tugas1.html">TUGAS 1 : Join data dari mysql dan postgresql</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tugas-Menghitung-Jarak.html">TUGAS 2 : Menghitung Jarak</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks.html">TUGAS 3 : Naive Bayes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="21-002_UTS_Penambangan%20Data.html">TUGAS UTS PENAMBANGAN DATA :  K-Nearest Neighbors and Naive Bayes Classification Method on Heart Disease Prediction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pohonkeputusan1.html">Membuat pohon keputusan dengan scikit learn</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2FHeart Disease Prediction.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/Heart Disease Prediction.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Heart Disease Prediction</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries">Import libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-dataset">Import dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-the-data">Understanding the data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-processing">Data Processing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#machine-learning">Machine Learning</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#k-neighbors-classifier">K Neighbors Classifier</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#support-vector-classifier">Support Vector Classifier</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-tree-classifier">Decision Tree Classifier</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#random-forest-classifier">Random Forest Classifier</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <div class="tex2jax_ignore mathjax_ignore section" id="heart-disease-prediction">
+<h1>Heart Disease Prediction<a class="headerlink" href="#heart-disease-prediction" title="Permalink to this heading">#</a></h1>
+<p>In this machine learning project, I have collected the dataset from Kaggle (<a class="reference external" href="https://www.kaggle.com/ronitf/heart-disease-uci">https://www.kaggle.com/ronitf/heart-disease-uci</a>) and I will be using Machine Learning to make predictions on whether a person is suffering from Heart Disease or not.</p>
+<div class="section" id="import-libraries">
+<h2>Import libraries<a class="headerlink" href="#import-libraries" title="Permalink to this heading">#</a></h2>
+<p>Let’s first import all the necessary libraries. I’ll use <code class="docutils literal notranslate"><span class="pre">numpy</span></code> and <code class="docutils literal notranslate"><span class="pre">pandas</span></code> to start with. For visualization, I will use <code class="docutils literal notranslate"><span class="pre">pyplot</span></code> subpackage of <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code>, use <code class="docutils literal notranslate"><span class="pre">rcParams</span></code> to add styling to the plots and <code class="docutils literal notranslate"><span class="pre">rainbow</span></code> for colors. For implementing Machine Learning models and processing of data, I will use the <code class="docutils literal notranslate"><span class="pre">sklearn</span></code> library.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">rcParams</span>
+<span class="kn">from</span> <span class="nn">matplotlib.cm</span> <span class="kn">import</span> <span class="n">rainbow</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>For processing the data, I’ll import a few libraries. To split the available dataset for testing and training, I’ll use the <code class="docutils literal notranslate"><span class="pre">train_test_split</span></code> method. To scale the features, I am using <code class="docutils literal notranslate"><span class="pre">StandardScaler</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">StandardScaler</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Next, I’ll import all the Machine Learning algorithms I will be using.</p>
+<ol class="arabic simple">
+<li><p>K Neighbors Classifier</p></li>
+<li><p>Support Vector Classifier</p></li>
+<li><p>Decision Tree Classifier</p></li>
+<li><p>Random Forest Classifier</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.neighbors</span> <span class="kn">import</span> <span class="n">KNeighborsClassifier</span>
+<span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <span class="n">SVC</span>
+<span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeClassifier</span>
+<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="import-dataset">
+<h2>Import dataset<a class="headerlink" href="#import-dataset" title="Permalink to this heading">#</a></h2>
+<p>Now that we have all the libraries we will need, I can import the dataset and take a look at it. The dataset is stored in the file <code class="docutils literal notranslate"><span class="pre">dataset.csv</span></code>. I’ll use the pandas <code class="docutils literal notranslate"><span class="pre">read_csv</span></code> method to read the dataset.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;dataset.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="ne">FileNotFoundError</span>Traceback (most recent call last)
+<span class="nn">&lt;ipython-input-4-7398a79b6b7c&gt;</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">dataset</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;dataset.csv&#39;</span><span class="p">)</span>
+
+<span class="nn">/usr/local/lib/python3.9/dist-packages/pandas/util/_decorators.py</span> in <span class="ni">wrapper</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">209</span>                 <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">210</span>                     <span class="n">kwargs</span><span class="p">[</span><span class="n">new_arg_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_arg_value</span>
+<span class="ne">--&gt; </span><span class="mi">211</span>             <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">212</span> 
+<span class="g g-Whitespace">    </span><span class="mi">213</span>         <span class="k">return</span> <span class="n">cast</span><span class="p">(</span><span class="n">F</span><span class="p">,</span> <span class="n">wrapper</span><span class="p">)</span>
+
+<span class="nn">/usr/local/lib/python3.9/dist-packages/pandas/util/_decorators.py</span> in <span class="ni">wrapper</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">329</span>                     <span class="n">stacklevel</span><span class="o">=</span><span class="n">find_stack_level</span><span class="p">(),</span>
+<span class="g g-Whitespace">    </span><span class="mi">330</span>                 <span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">331</span>             <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">332</span> 
+<span class="g g-Whitespace">    </span><span class="mi">333</span>         <span class="c1"># error: &quot;Callable[[VarArg(Any), KwArg(Any)], Any]&quot; has no</span>
+
+<span class="nn">/usr/local/lib/python3.9/dist-packages/pandas/io/parsers/readers.py</span> in <span class="ni">read_csv</span><span class="nt">(filepath_or_buffer, sep, delimiter, header, names, index_col, usecols, squeeze, prefix, mangle_dupe_cols, dtype, engine, converters, true_values, false_values, skipinitialspace, skiprows, skipfooter, nrows, na_values, keep_default_na, na_filter, verbose, skip_blank_lines, parse_dates, infer_datetime_format, keep_date_col, date_parser, dayfirst, cache_dates, iterator, chunksize, compression, thousands, decimal, lineterminator, quotechar, quoting, doublequote, escapechar, comment, encoding, encoding_errors, dialect, error_bad_lines, warn_bad_lines, on_bad_lines, delim_whitespace, low_memory, memory_map, float_precision, storage_options)</span>
+<span class="g g-Whitespace">    </span><span class="mi">948</span>     <span class="n">kwds</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwds_defaults</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">949</span> 
+<span class="ne">--&gt; </span><span class="mi">950</span>     <span class="k">return</span> <span class="n">_read</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="n">kwds</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">951</span> 
+<span class="g g-Whitespace">    </span><span class="mi">952</span> 
+
+<span class="nn">/usr/local/lib/python3.9/dist-packages/pandas/io/parsers/readers.py</span> in <span class="ni">_read</span><span class="nt">(filepath_or_buffer, kwds)</span>
+<span class="g g-Whitespace">    </span><span class="mi">603</span> 
+<span class="g g-Whitespace">    </span><span class="mi">604</span>     <span class="c1"># Create the parser.</span>
+<span class="ne">--&gt; </span><span class="mi">605</span>     <span class="n">parser</span> <span class="o">=</span> <span class="n">TextFileReader</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">606</span> 
+<span class="g g-Whitespace">    </span><span class="mi">607</span>     <span class="k">if</span> <span class="n">chunksize</span> <span class="ow">or</span> <span class="n">iterator</span><span class="p">:</span>
+
+<span class="nn">/usr/local/lib/python3.9/dist-packages/pandas/io/parsers/readers.py</span> in <span class="ni">__init__</span><span class="nt">(self, f, engine, **kwds)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1440</span> 
+<span class="g g-Whitespace">   </span><span class="mi">1441</span>         <span class="bp">self</span><span class="o">.</span><span class="n">handles</span><span class="p">:</span> <span class="n">IOHandles</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="ne">-&gt; </span><span class="mi">1442</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_make_engine</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">engine</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1443</span> 
+<span class="g g-Whitespace">   </span><span class="mi">1444</span>     <span class="k">def</span> <span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+
+<span class="nn">/usr/local/lib/python3.9/dist-packages/pandas/io/parsers/readers.py</span> in <span class="ni">_make_engine</span><span class="nt">(self, f, engine)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1733</span>                 <span class="k">if</span> <span class="s2">&quot;b&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">mode</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1734</span>                     <span class="n">mode</span> <span class="o">+=</span> <span class="s2">&quot;b&quot;</span>
+<span class="ne">-&gt; </span><span class="mi">1735</span>             <span class="bp">self</span><span class="o">.</span><span class="n">handles</span> <span class="o">=</span> <span class="n">get_handle</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1736</span>                 <span class="n">f</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1737</span>                 <span class="n">mode</span><span class="p">,</span>
+
+<span class="nn">/usr/local/lib/python3.9/dist-packages/pandas/io/common.py</span> in <span class="ni">get_handle</span><span class="nt">(path_or_buf, mode, encoding, compression, memory_map, is_text, errors, storage_options)</span>
+<span class="g g-Whitespace">    </span><span class="mi">854</span>         <span class="k">if</span> <span class="n">ioargs</span><span class="o">.</span><span class="n">encoding</span> <span class="ow">and</span> <span class="s2">&quot;b&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">ioargs</span><span class="o">.</span><span class="n">mode</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">855</span>             <span class="c1"># Encoding</span>
+<span class="ne">--&gt; </span><span class="mi">856</span>             <span class="n">handle</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">857</span>                 <span class="n">handle</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">858</span>                 <span class="n">ioargs</span><span class="o">.</span><span class="n">mode</span><span class="p">,</span>
+
+<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;dataset.csv&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>The dataset is now loaded into the variable <code class="docutils literal notranslate"><span class="pre">dataset</span></code>. I’ll just take a glimpse of the data using the <code class="docutils literal notranslate"><span class="pre">desribe()</span></code> and <code class="docutils literal notranslate"><span class="pre">info()</span></code> methods before I actually start processing and visualizing it.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 303 entries, 0 to 302
+Data columns (total 14 columns):
+age         303 non-null int64
+sex         303 non-null int64
+cp          303 non-null int64
+trestbps    303 non-null int64
+chol        303 non-null int64
+fbs         303 non-null int64
+restecg     303 non-null int64
+thalach     303 non-null int64
+exang       303 non-null int64
+oldpeak     303 non-null float64
+slope       303 non-null int64
+ca          303 non-null int64
+thal        303 non-null int64
+target      303 non-null int64
+dtypes: float64(1), int64(13)
+memory usage: 33.2 KB
+</pre></div>
+</div>
+</div>
+</div>
+<p>Looks like the dataset has a total of 303 rows and there are no missing values. There are a total of <code class="docutils literal notranslate"><span class="pre">13</span> <span class="pre">features</span></code> along with one target value which we wish to find.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>age</th>
+      <th>sex</th>
+      <th>cp</th>
+      <th>trestbps</th>
+      <th>chol</th>
+      <th>fbs</th>
+      <th>restecg</th>
+      <th>thalach</th>
+      <th>exang</th>
+      <th>oldpeak</th>
+      <th>slope</th>
+      <th>ca</th>
+      <th>thal</th>
+      <th>target</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>303.000000</td>
+      <td>303.000000</td>
+      <td>303.000000</td>
+      <td>303.000000</td>
+      <td>303.000000</td>
+      <td>303.000000</td>
+      <td>303.000000</td>
+      <td>303.000000</td>
+      <td>303.000000</td>
+      <td>303.000000</td>
+      <td>303.000000</td>
+      <td>303.000000</td>
+      <td>303.000000</td>
+      <td>303.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>54.366337</td>
+      <td>0.683168</td>
+      <td>0.966997</td>
+      <td>131.623762</td>
+      <td>246.264026</td>
+      <td>0.148515</td>
+      <td>0.528053</td>
+      <td>149.646865</td>
+      <td>0.326733</td>
+      <td>1.039604</td>
+      <td>1.399340</td>
+      <td>0.729373</td>
+      <td>2.313531</td>
+      <td>0.544554</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>9.082101</td>
+      <td>0.466011</td>
+      <td>1.032052</td>
+      <td>17.538143</td>
+      <td>51.830751</td>
+      <td>0.356198</td>
+      <td>0.525860</td>
+      <td>22.905161</td>
+      <td>0.469794</td>
+      <td>1.161075</td>
+      <td>0.616226</td>
+      <td>1.022606</td>
+      <td>0.612277</td>
+      <td>0.498835</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>29.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>94.000000</td>
+      <td>126.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>71.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>47.500000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>120.000000</td>
+      <td>211.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>133.500000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>1.000000</td>
+      <td>0.000000</td>
+      <td>2.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>55.000000</td>
+      <td>1.000000</td>
+      <td>1.000000</td>
+      <td>130.000000</td>
+      <td>240.000000</td>
+      <td>0.000000</td>
+      <td>1.000000</td>
+      <td>153.000000</td>
+      <td>0.000000</td>
+      <td>0.800000</td>
+      <td>1.000000</td>
+      <td>0.000000</td>
+      <td>2.000000</td>
+      <td>1.000000</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>61.000000</td>
+      <td>1.000000</td>
+      <td>2.000000</td>
+      <td>140.000000</td>
+      <td>274.500000</td>
+      <td>0.000000</td>
+      <td>1.000000</td>
+      <td>166.000000</td>
+      <td>1.000000</td>
+      <td>1.600000</td>
+      <td>2.000000</td>
+      <td>1.000000</td>
+      <td>3.000000</td>
+      <td>1.000000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>77.000000</td>
+      <td>1.000000</td>
+      <td>3.000000</td>
+      <td>200.000000</td>
+      <td>564.000000</td>
+      <td>1.000000</td>
+      <td>2.000000</td>
+      <td>202.000000</td>
+      <td>1.000000</td>
+      <td>6.200000</td>
+      <td>2.000000</td>
+      <td>4.000000</td>
+      <td>3.000000</td>
+      <td>1.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>The scale of each feature column is different and quite varied as well. While the maximum for <code class="docutils literal notranslate"><span class="pre">age</span></code> reaches 77, the maximum of <code class="docutils literal notranslate"><span class="pre">chol</span></code> (serum cholestoral) is 564.</p>
+</div>
+<div class="section" id="understanding-the-data">
+<h2>Understanding the data<a class="headerlink" href="#understanding-the-data" title="Permalink to this heading">#</a></h2>
+<p>Now, we can use visualizations to better understand our data and then look at any processing we might want to do.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">14</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">matshow</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">corr</span><span class="p">())</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="n">dataset</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">dataset</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="n">dataset</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.colorbar.Colorbar at 0x1a15fc91d0&gt;
+</pre></div>
+</div>
+<img alt="_images/f5dd886a002eb06524b13bf3b8755c5bc601bd8a92f5b26ce6bd3d92d3f2e588.png" src="_images/f5dd886a002eb06524b13bf3b8755c5bc601bd8a92f5b26ce6bd3d92d3f2e588.png" />
+</div>
+</div>
+<p>Taking a look at the correlation matrix above, it’s easy to see that a few features have negative correlation with the target value while some have positive.
+Next, I’ll take a look at the histograms for each variable.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span><span class="o">.</span><span class="n">hist</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[&lt;matplotlib.axes._subplots.AxesSubplot object at 0x1a15d3edd8&gt;,
+        &lt;matplotlib.axes._subplots.AxesSubplot object at 0x1a16d85940&gt;,
+        &lt;matplotlib.axes._subplots.AxesSubplot object at 0x1a16d0dba8&gt;,
+        &lt;matplotlib.axes._subplots.AxesSubplot object at 0x1a16d37e10&gt;],
+       [&lt;matplotlib.axes._subplots.AxesSubplot object at 0x1a175430b8&gt;,
+        &lt;matplotlib.axes._subplots.AxesSubplot object at 0x1a16dd3320&gt;,
+        &lt;matplotlib.axes._subplots.AxesSubplot object at 0x1a16dfc588&gt;,
+        &lt;matplotlib.axes._subplots.AxesSubplot object at 0x1a1789b828&gt;],
+       [&lt;matplotlib.axes._subplots.AxesSubplot object at 0x1a1789b860&gt;,
+        &lt;matplotlib.axes._subplots.AxesSubplot object at 0x1a178edcc0&gt;,
+        &lt;matplotlib.axes._subplots.AxesSubplot object at 0x1a17916f28&gt;,
+        &lt;matplotlib.axes._subplots.AxesSubplot object at 0x1a1794b1d0&gt;],
+       [&lt;matplotlib.axes._subplots.AxesSubplot object at 0x1a17972438&gt;,
+        &lt;matplotlib.axes._subplots.AxesSubplot object at 0x1a1799b6a0&gt;,
+        &lt;matplotlib.axes._subplots.AxesSubplot object at 0x1a179c7908&gt;,
+        &lt;matplotlib.axes._subplots.AxesSubplot object at 0x1a179f1b70&gt;]],
+      dtype=object)
+</pre></div>
+</div>
+<img alt="_images/fb681aac6b8f492fdd7ed7b9c5087b4c4e24b1bb3ce74446f36b69d9761fab50.png" src="_images/fb681aac6b8f492fdd7ed7b9c5087b4c4e24b1bb3ce74446f36b69d9761fab50.png" />
+</div>
+</div>
+<p>Taking a look at the histograms above, I can see that each feature has a different range of distribution. Thus, using scaling before our predictions should be of great use. Also, the categorical features do stand out.</p>
+<p>It’s always a good practice to work with a dataset where the target classes are of approximately equal size. Thus, let’s check for the same.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">8</span><span class="p">,</span><span class="mi">6</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">(),</span> <span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(),</span> <span class="n">color</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Target Classes&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Count&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Count of each Target Class&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Count of each Target Class&#39;)
+</pre></div>
+</div>
+<img alt="_images/8dbbb54f6fbb0051ff8402ab7aac159b8b83ecaa96480c028108332cefc3f2b1.png" src="_images/8dbbb54f6fbb0051ff8402ab7aac159b8b83ecaa96480c028108332cefc3f2b1.png" />
+</div>
+</div>
+<p>The two classes are not exactly 50% each but the ratio is good enough to continue without dropping/increasing our data.</p>
+</div>
+<div class="section" id="data-processing">
+<h2>Data Processing<a class="headerlink" href="#data-processing" title="Permalink to this heading">#</a></h2>
+<p>After exploring the dataset, I observed that I need to convert some categorical variables into dummy variables and scale all the values before training the Machine Learning models.
+First, I’ll use the <code class="docutils literal notranslate"><span class="pre">get_dummies</span></code> method to create dummy columns for categorical variables.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;sex&#39;</span><span class="p">,</span> <span class="s1">&#39;cp&#39;</span><span class="p">,</span> <span class="s1">&#39;fbs&#39;</span><span class="p">,</span> <span class="s1">&#39;restecg&#39;</span><span class="p">,</span> <span class="s1">&#39;exang&#39;</span><span class="p">,</span> <span class="s1">&#39;slope&#39;</span><span class="p">,</span> <span class="s1">&#39;ca&#39;</span><span class="p">,</span> <span class="s1">&#39;thal&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now, I will use the <code class="docutils literal notranslate"><span class="pre">StandardScaler</span></code> from <code class="docutils literal notranslate"><span class="pre">sklearn</span></code> to scale my dataset.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">standardScaler</span> <span class="o">=</span> <span class="n">StandardScaler</span><span class="p">()</span>
+<span class="n">columns_to_scale</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">,</span> <span class="s1">&#39;trestbps&#39;</span><span class="p">,</span> <span class="s1">&#39;chol&#39;</span><span class="p">,</span> <span class="s1">&#39;thalach&#39;</span><span class="p">,</span> <span class="s1">&#39;oldpeak&#39;</span><span class="p">]</span>
+<span class="n">dataset</span><span class="p">[</span><span class="n">columns_to_scale</span><span class="p">]</span> <span class="o">=</span> <span class="n">standardScaler</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">dataset</span><span class="p">[</span><span class="n">columns_to_scale</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The data is not ready for our Machine Learning application.</p>
+</div>
+<div class="section" id="machine-learning">
+<h2>Machine Learning<a class="headerlink" href="#machine-learning" title="Permalink to this heading">#</a></h2>
+<p>I’ll now import <code class="docutils literal notranslate"><span class="pre">train_test_split</span></code> to split our dataset into training and testing datasets. Then, I’ll import all Machine Learning models I’ll be using to train and test the data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">]</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;target&#39;</span><span class="p">],</span> <span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span> <span class="o">=</span> <span class="mf">0.33</span><span class="p">,</span> <span class="n">random_state</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="k-neighbors-classifier">
+<h3>K Neighbors Classifier<a class="headerlink" href="#k-neighbors-classifier" title="Permalink to this heading">#</a></h3>
+<p>The classification score varies based on different values of neighbors that we choose. Thus, I’ll plot a score graph for different values of K (neighbors) and check when do I achieve the best score.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">knn_scores</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">21</span><span class="p">):</span>
+    <span class="n">knn_classifier</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="n">n_neighbors</span> <span class="o">=</span> <span class="n">k</span><span class="p">)</span>
+    <span class="n">knn_classifier</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+    <span class="n">knn_scores</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">knn_classifier</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>I have the scores for different neighbor values in the array <code class="docutils literal notranslate"><span class="pre">knn_scores</span></code>. I’ll now plot it and see for which value of K did I get the best scores.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">k</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">21</span><span class="p">)],</span> <span class="n">knn_scores</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;red&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">21</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">knn_scores</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">knn_scores</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">([</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">21</span><span class="p">)])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Number of Neighbors (K)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Scores&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;K Neighbors Classifier scores for different K values&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;K Neighbors Classifier scores for different K values&#39;)
+</pre></div>
+</div>
+<img alt="_images/93d9421e9fbdc3ae187e959788a84d42ec88b48909684ea479681ba49787f123.png" src="_images/93d9421e9fbdc3ae187e959788a84d42ec88b48909684ea479681ba49787f123.png" />
+</div>
+</div>
+<p>From the plot above, it is clear that the maximum score achieved was <code class="docutils literal notranslate"><span class="pre">0.87</span></code> for the 8 neighbors.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The score for K Neighbors Classifier is </span><span class="si">{}</span><span class="s2">% with </span><span class="si">{}</span><span class="s2"> nieghbors.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">knn_scores</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The score for K Neighbors Classifier is 87.0% with 8 nieghbors.
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="support-vector-classifier">
+<h3>Support Vector Classifier<a class="headerlink" href="#support-vector-classifier" title="Permalink to this heading">#</a></h3>
+<p>There are several kernels for Support Vector Classifier. I’ll test some of them and check which has the best score.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">svc_scores</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">kernels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;linear&#39;</span><span class="p">,</span> <span class="s1">&#39;poly&#39;</span><span class="p">,</span> <span class="s1">&#39;rbf&#39;</span><span class="p">,</span> <span class="s1">&#39;sigmoid&#39;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">kernels</span><span class="p">)):</span>
+    <span class="n">svc_classifier</span> <span class="o">=</span> <span class="n">SVC</span><span class="p">(</span><span class="n">kernel</span> <span class="o">=</span> <span class="n">kernels</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+    <span class="n">svc_classifier</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+    <span class="n">svc_scores</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">svc_classifier</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>I’ll now plot a bar plot of scores for each kernel and see which performed the best.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">colors</span> <span class="o">=</span> <span class="n">rainbow</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">kernels</span><span class="p">)))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">kernels</span><span class="p">,</span> <span class="n">svc_scores</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="n">colors</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">kernels</span><span class="p">)):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">svc_scores</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">svc_scores</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Kernels&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Scores&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Support Vector Classifier scores for different kernels&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Support Vector Classifier scores for different kernels&#39;)
+</pre></div>
+</div>
+<img alt="_images/6cace8e005d4adbb84437640a12edcf94fbf804ea28e81f7d42a79b0456ec773.png" src="_images/6cace8e005d4adbb84437640a12edcf94fbf804ea28e81f7d42a79b0456ec773.png" />
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">linear</span></code> kernel performed the best, being slightly better than <code class="docutils literal notranslate"><span class="pre">rbf</span></code> kernel.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The score for Support Vector Classifier is </span><span class="si">{}</span><span class="s2">% with </span><span class="si">{}</span><span class="s2"> kernel.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">svc_scores</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span> <span class="s1">&#39;linear&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The score for Support Vector Classifier is 83.0% with linear kernel.
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="decision-tree-classifier">
+<h3>Decision Tree Classifier<a class="headerlink" href="#decision-tree-classifier" title="Permalink to this heading">#</a></h3>
+<p>Here, I’ll use the Decision Tree Classifier to model the problem at hand. I’ll vary between a set of <code class="docutils literal notranslate"><span class="pre">max_features</span></code> and see which returns the best accuracy.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dt_scores</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="n">dt_classifier</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">max_features</span> <span class="o">=</span> <span class="n">i</span><span class="p">,</span> <span class="n">random_state</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">dt_classifier</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+    <span class="n">dt_scores</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">dt_classifier</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>I selected the maximum number of features from 1 to 30 for split. Now, let’s see the scores for each of those cases.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)],</span> <span class="n">dt_scores</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;green&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">dt_scores</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">dt_scores</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">([</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Max features&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Scores&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Decision Tree Classifier scores for different number of maximum features&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Decision Tree Classifier scores for different number of maximum features&#39;)
+</pre></div>
+</div>
+<img alt="_images/f2610c7b649ea5bdfc8972923eb62e0b8ba666f6040f01271d7d8c2cd4367249.png" src="_images/f2610c7b649ea5bdfc8972923eb62e0b8ba666f6040f01271d7d8c2cd4367249.png" />
+</div>
+</div>
+<p>The model achieved the best accuracy at three values of maximum features, <code class="docutils literal notranslate"><span class="pre">2</span></code>, <code class="docutils literal notranslate"><span class="pre">4</span></code> and <code class="docutils literal notranslate"><span class="pre">18</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The score for Decision Tree Classifier is </span><span class="si">{}</span><span class="s2">% with </span><span class="si">{}</span><span class="s2"> maximum features.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dt_scores</span><span class="p">[</span><span class="mi">17</span><span class="p">]</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">18</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The score for Decision Tree Classifier is 79.0% with [2, 4, 18] maximum features.
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="random-forest-classifier">
+<h3>Random Forest Classifier<a class="headerlink" href="#random-forest-classifier" title="Permalink to this heading">#</a></h3>
+<p>Now, I’ll use the ensemble method, Random Forest Classifier, to create the model and vary the number of estimators to see their effect.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rf_scores</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">estimators</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="mi">1000</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">estimators</span><span class="p">:</span>
+    <span class="n">rf_classifier</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span> <span class="o">=</span> <span class="n">i</span><span class="p">,</span> <span class="n">random_state</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">rf_classifier</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+    <span class="n">rf_scores</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">rf_classifier</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The model is trained and the scores are recorded. Let’s plot a bar plot to compare the scores.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">colors</span> <span class="o">=</span> <span class="n">rainbow</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">estimators</span><span class="p">)))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">([</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">estimators</span><span class="p">))],</span> <span class="n">rf_scores</span><span class="p">,</span> <span class="n">color</span> <span class="o">=</span> <span class="n">colors</span><span class="p">,</span> <span class="n">width</span> <span class="o">=</span> <span class="mf">0.8</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">estimators</span><span class="p">)):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">rf_scores</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">rf_scores</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">ticks</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">estimators</span><span class="p">))],</span> <span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="n">estimator</span><span class="p">)</span> <span class="k">for</span> <span class="n">estimator</span> <span class="ow">in</span> <span class="n">estimators</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Number of estimators&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Scores&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Random Forest Classifier scores for different number of estimators&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 1.0, &#39;Random Forest Classifier scores for different number of estimators&#39;)
+</pre></div>
+</div>
+<img alt="_images/9c890b4975a03144adbb7adb191ee8dc4ba67cb87e6ec260cd73e7e0d70ad2aa.png" src="_images/9c890b4975a03144adbb7adb191ee8dc4ba67cb87e6ec260cd73e7e0d70ad2aa.png" />
+</div>
+</div>
+<p>The maximum score is achieved when the total estimators are 100 or 500.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The score for Random Forest Classifier is </span><span class="si">{}</span><span class="s2">% with </span><span class="si">{}</span><span class="s2"> estimators.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">rf_scores</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="mi">100</span><span class="p">,</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">500</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The score for Random Forest Classifier is 84.0% with [100, 500] estimators.
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="conclusion">
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this heading">#</a></h2>
+<p>In this project, I used Machine Learning to predict whether a person is suffering from a heart disease. After importing the data, I analysed it using plots. Then, I did generated dummy variables for categorical features and scaled other features.
+I then applied four Machine Learning algorithms, <code class="docutils literal notranslate"><span class="pre">K</span> <span class="pre">Neighbors</span> <span class="pre">Classifier</span></code>, <code class="docutils literal notranslate"><span class="pre">Support</span> <span class="pre">Vector</span> <span class="pre">Classifier</span></code>, <code class="docutils literal notranslate"><span class="pre">Decision</span> <span class="pre">Tree</span> <span class="pre">Classifier</span></code> and <code class="docutils literal notranslate"><span class="pre">Random</span> <span class="pre">Forest</span> <span class="pre">Classifier</span></code>. I varied parameters across each model to improve their scores.
+In the end, <code class="docutils literal notranslate"><span class="pre">K</span> <span class="pre">Neighbors</span> <span class="pre">Classifier</span></code> achieved the highest score of <code class="docutils literal notranslate"><span class="pre">87%</span></code> with <code class="docutils literal notranslate"><span class="pre">8</span> <span class="pre">nearest</span> <span class="pre">neighbors</span></code>.</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries">Import libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#import-dataset">Import dataset</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-the-data">Understanding the data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-processing">Data Processing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#machine-learning">Machine Learning</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#k-neighbors-classifier">K Neighbors Classifier</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#support-vector-classifier">Support Vector Classifier</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-tree-classifier">Decision Tree Classifier</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#random-forest-classifier">Random Forest Classifier</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By 210411100002 - Mohammad Iqbal Surya Ramadhan
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
