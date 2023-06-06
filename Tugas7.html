@@ -359,6 +359,15 @@ document.write(`
                   
   <div class="tex2jax_ignore mathjax_ignore section" id="tugas-7-pca-with-iris-dataset">
 <h1>TUGAS 7 : PCA with iris dataset<a class="headerlink" href="#tugas-7-pca-with-iris-dataset" title="Permalink to this heading">#</a></h1>
+<p>PCA menemukan komponen utama data.</p>
+<p>Seringkali berguna untuk mengukur data dalam hal komponen utamanya daripada pada sumbu x-y normal. Jadi apa komponen utama itu? Mereka adalah struktur dasar dalam data. Mereka adalah arah di mana terdapat varian paling banyak, arah di mana data paling tersebar.</p>
+<p>PCA menemukan satu set dimensi baru (atau satu set basis pandangan) sedemikian rupa sehingga semua dimensi adalah ortogonal (dan karenanya bebas linier) dan diberi peringkat sesuai dengan varians data di sepanjang dimensi tersebut. Artinya sumbu prinsip yang lebih penting terjadi lebih dulu. (lebih penting = lebih banyak variasi/lebih banyak data tersebar)
+Bagaimana cara kerja PCA -</p>
+<p>Hitung matriks kovarians X dari titik data.
+Hitung vektor eigen dan nilai eigen yang sesuai.
+Urutkan vektor eigen menurut nilai eigennya dalam urutan menurun.
+Pilih vektor k eigen pertama dan itu akan menjadi dimensi k baru.
+Ubah titik data n dimensi asli menjadi k dimensi.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span> <span class="c1"># linear algebra</span>
@@ -376,6 +385,17 @@ document.write(`
 </div>
 </div>
 </div>
+<p>mengimpor beberapa library yang diperlukan dan mengakses dataset “Iris” untuk analisis lebih lanjut. Berikut adalah penjelasan untuk setiap baris kode:</p>
+<p>import numpy as np dan import pandas as pd digunakan untuk mengimpor library NumPy dan Pandas, yang sering digunakan untuk manipulasi dan analisis data dalam Python.</p>
+<p>from sklearn import datasets digunakan untuk mengimpor dataset bawaan scikit-learn, meskipun dalam kode ini tidak digunakan.</p>
+<p>from sklearn.model_selection import train_test_split digunakan untuk mengimpor fungsi train_test_split dari scikit-learn, yang digunakan untuk membagi data menjadi subset pelatihan dan pengujian.</p>
+<p>from sklearn.neighbors import KNeighborsClassifier digunakan untuk mengimpor kelas KNeighborsClassifier dari scikit-learn, yang akan digunakan untuk membangun model klasifikasi K-NN.</p>
+<p>import seaborn as sns digunakan untuk mengimpor library Seaborn, yang digunakan untuk visualisasi data.</p>
+<p>sns.set() digunakan untuk mengatur gaya visualisasi default Seaborn.</p>
+<p>import matplotlib.pyplot as plt digunakan untuk mengimpor library Matplotlib, yang digunakan untuk visualisasi data.</p>
+<p>import os digunakan untuk mengimpor library os, yang digunakan untuk melakukan operasi terkait sistem operasi, meskipun dalam kode ini tidak digunakan.</p>
+<p>iris_data = pd.read_csv(“<a class="reference external" href="https://raw.githubusercontent.com/Iqbalsuryaa/pendata/main/Iris.csv">https://raw.githubusercontent.com/Iqbalsuryaa/pendata/main/Iris.csv</a>”, index_col=’Id’) digunakan untuk membaca dataset “Iris” dari URL yang disediakan dan menyimpannya dalam variabel iris_data sebagai objek Pandas DataFrame. Parameter index_col=’Id’ digunakan untuk menentukan kolom ‘Id’ sebagai indeks DataFrame.</p>
+<p>Dengan menjalankan kode tersebut, library dan dataset yang diperlukan akan diimpor, dan dataset “Iris” akan dibaca dan disimpan dalam variabel iris_data untuk analisis selanjutnya.</p>
 <p><strong>Univariate EDA</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -408,7 +428,7 @@ memory usage: 7.0+ KB
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-c99b817c-5573-4553-ad61-3ab93da650c4">
+  <div id="df-eb9a42c6-230b-4045-b72e-7590d9b09620">
     <div class="colab-df-container">
       <div>
 <style scoped>
@@ -494,7 +514,7 @@ memory usage: 7.0+ KB
   </tbody>
 </table>
 </div>
-      <button class="colab-df-convert" onclick="convertToInteractive('df-c99b817c-5573-4553-ad61-3ab93da650c4')"
+      <button class="colab-df-convert" onclick="convertToInteractive('df-eb9a42c6-230b-4045-b72e-7590d9b09620')"
               title="Convert this dataframe to an interactive table."
               style="display:none;">
         
@@ -545,12 +565,12 @@ memory usage: 7.0+ KB
 
       <script>
         const buttonEl =
-          document.querySelector('#df-c99b817c-5573-4553-ad61-3ab93da650c4 button.colab-df-convert');
+          document.querySelector('#df-eb9a42c6-230b-4045-b72e-7590d9b09620 button.colab-df-convert');
         buttonEl.style.display =
           google.colab.kernel.accessAllowed ? 'block' : 'none';
 
         async function convertToInteractive(key) {
-          const element = document.querySelector('#df-c99b817c-5573-4553-ad61-3ab93da650c4');
+          const element = document.querySelector('#df-eb9a42c6-230b-4045-b72e-7590d9b09620');
           const dataTable =
             await google.colab.kernel.invokeFunction('convertToInteractive',
                                                      [key], {});
@@ -579,7 +599,7 @@ memory usage: 7.0+ KB
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-d2b8ba83-64c9-4540-848a-1c4d06d84e1b">
+  <div id="df-fb6d03b5-2835-4119-b04b-4648283e272f">
     <div class="colab-df-container">
       <div>
 <style scoped>
@@ -658,7 +678,7 @@ memory usage: 7.0+ KB
   </tbody>
 </table>
 </div>
-      <button class="colab-df-convert" onclick="convertToInteractive('df-d2b8ba83-64c9-4540-848a-1c4d06d84e1b')"
+      <button class="colab-df-convert" onclick="convertToInteractive('df-fb6d03b5-2835-4119-b04b-4648283e272f')"
               title="Convert this dataframe to an interactive table."
               style="display:none;">
         
@@ -709,12 +729,12 @@ memory usage: 7.0+ KB
 
       <script>
         const buttonEl =
-          document.querySelector('#df-d2b8ba83-64c9-4540-848a-1c4d06d84e1b button.colab-df-convert');
+          document.querySelector('#df-fb6d03b5-2835-4119-b04b-4648283e272f button.colab-df-convert');
         buttonEl.style.display =
           google.colab.kernel.accessAllowed ? 'block' : 'none';
 
         async function convertToInteractive(key) {
-          const element = document.querySelector('#df-d2b8ba83-64c9-4540-848a-1c4d06d84e1b');
+          const element = document.querySelector('#df-fb6d03b5-2835-4119-b04b-4648283e272f');
           const dataTable =
             await google.colab.kernel.invokeFunction('convertToInteractive',
                                                      [key], {});
@@ -743,6 +763,11 @@ memory usage: 7.0+ KB
 </div>
 </div>
 </div>
+<p>melakukan label encoding pada kolom “Species” dalam dataset Iris. Hal ini dilakukan karena algoritma yang akan digunakan selanjutnya tidak menerima data non-numerik atau boolean sebagai input.</p>
+<p>iris_data.Species.replace({‘Iris-setosa’:0,’Iris-versicolor’:1, ‘Iris-virginica’:2}, inplace=True) digunakan untuk mengganti nilai-nilai dalam kolom “Species” menggunakan metode replace() pada objek DataFrame iris_data.</p>
+<p>Pada metode replace(), kita memberikan argumen berupa dictionary yang menentukan nilai-nilai yang akan diganti dan nilai baru yang akan digunakan.</p>
+<p>Dalam hal ini, kita mengganti nilai ‘Iris-setosa’ dengan 0, ‘Iris-versicolor’ dengan 1, dan ‘Iris-virginica’ dengan 2.</p>
+<p>Parameter inplace=True digunakan untuk melakukan penggantian nilai langsung pada objek DataFrame iris_data, sehingga tidak perlu menyimpan hasil penggantian ke variabel baru.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">iris_data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -751,7 +776,7 @@ memory usage: 7.0+ KB
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-cc4097ba-a288-43ba-b41a-d820b08b6e4f">
+  <div id="df-31f32897-0496-44d3-a565-1675cbd16ab6">
     <div class="colab-df-container">
       <div>
 <style scoped>
@@ -830,7 +855,7 @@ memory usage: 7.0+ KB
   </tbody>
 </table>
 </div>
-      <button class="colab-df-convert" onclick="convertToInteractive('df-cc4097ba-a288-43ba-b41a-d820b08b6e4f')"
+      <button class="colab-df-convert" onclick="convertToInteractive('df-31f32897-0496-44d3-a565-1675cbd16ab6')"
               title="Convert this dataframe to an interactive table."
               style="display:none;">
         
@@ -881,12 +906,12 @@ memory usage: 7.0+ KB
 
       <script>
         const buttonEl =
-          document.querySelector('#df-cc4097ba-a288-43ba-b41a-d820b08b6e4f button.colab-df-convert');
+          document.querySelector('#df-31f32897-0496-44d3-a565-1675cbd16ab6 button.colab-df-convert');
         buttonEl.style.display =
           google.colab.kernel.accessAllowed ? 'block' : 'none';
 
         async function convertToInteractive(key) {
-          const element = document.querySelector('#df-cc4097ba-a288-43ba-b41a-d820b08b6e4f');
+          const element = document.querySelector('#df-31f32897-0496-44d3-a565-1675cbd16ab6');
           const dataTable =
             await google.colab.kernel.invokeFunction('convertToInteractive',
                                                      [key], {});
@@ -919,6 +944,14 @@ memory usage: 7.0+ KB
 <img alt="_images/0a4f5421103118982a07813979fa0f62cc3d0415f15f113482d51538acead10d.png" src="_images/0a4f5421103118982a07813979fa0f62cc3d0415f15f113482d51538acead10d.png" />
 </div>
 </div>
+<p>melakukan analisis jumlah nilai null (missing value) dalam dataset Iris sebelum dilakukan pemodelan.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">missingno</span> <span class="pre">as</span> <span class="pre">msno</span></code> digunakan untuk mengimpor library Missingno, yang digunakan untuk visualisasi data yang hilang (missing values).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">p</span> <span class="pre">=</span> <span class="pre">msno.bar(iris_data)</span></code> digunakan untuk membuat plot bar (diagram batang) menggunakan fungsi <code class="docutils literal notranslate"><span class="pre">bar()</span></code> dari library Missingno untuk menganalisis jumlah nilai null dalam setiap kolom dataset Iris. Variabel <code class="docutils literal notranslate"><span class="pre">p</span></code> digunakan untuk menyimpan plot yang dihasilkan.</p></li>
+<li><p>Diagram batang tersebut akan menampilkan kolom-kolom dataset sebagai sumbu x, dan tinggi setiap batang akan merepresentasikan jumlah nilai null dalam kolom tersebut.</p></li>
+<li><p>Dengan melihat plot, kita dapat memeriksa secara visual seberapa banyak nilai null yang ada dalam dataset. Ini penting karena adanya nilai null dapat mempengaruhi pemodelan dan perlu diperhatikan sebelum melanjutkan ke tahap pemodelan.</p></li>
+</ul>
+<p>Dengan menjalankan code tersebut, akan dihasilkan plot bar yang menunjukkan jumlah nilai null dalam setiap kolom dataset Iris.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="n">iris_data</span><span class="o">.</span><span class="n">Species</span> <span class="p">,</span><span class="n">data</span><span class="o">=</span><span class="n">iris_data</span><span class="p">)</span>
@@ -932,6 +965,14 @@ memory usage: 7.0+ KB
 <img alt="_images/bb47a34afc26faea2e454ae75b5c55e73559c1e86c939f984f50c10b25e1fe71.png" src="_images/bb47a34afc26faea2e454ae75b5c55e73559c1e86c939f984f50c10b25e1fe71.png" />
 </div>
 </div>
+<p>membuat plot count (jumlah) dari setiap kelas target dalam dataset Iris menggunakan library Seaborn dan Matplotlib.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">sns.countplot(y=iris_data.Species,</span> <span class="pre">data=iris_data)</span></code> digunakan untuk membuat plot count menggunakan fungsi <code class="docutils literal notranslate"><span class="pre">countplot()</span></code> dari library Seaborn. Parameter <code class="docutils literal notranslate"><span class="pre">y=iris_data.Species</span></code> menentukan variabel yang akan dihitung jumlahnya, yaitu kolom “Species” dalam dataset Iris. Parameter <code class="docutils literal notranslate"><span class="pre">data=iris_data</span></code> menentukan DataFrame yang akan digunakan sebagai sumber data untuk plot.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">plt.xlabel(&quot;Count</span> <span class="pre">of</span> <span class="pre">each</span> <span class="pre">Target</span> <span class="pre">class&quot;)</span></code> digunakan untuk memberi label sumbu x pada plot dengan teks “Count of each Target class”.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">plt.ylabel(&quot;Target</span> <span class="pre">classes&quot;)</span></code> digunakan untuk memberi label sumbu y pada plot dengan teks “Target classes”.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">plt.show()</span></code> digunakan untuk menampilkan plot yang telah dibuat.</p></li>
+</ul>
+<p>Dengan menjalankan code tersebut, akan ditampilkan plot count yang menunjukkan jumlah data untuk setiap kelas target dalam dataset Iris. Hal ini berguna untuk memahami distribusi kelas target dan memastikan bahwa dataset memiliki keseimbangan atau tidak dalam hal jumlah sampel untuk setiap kelas.</p>
 <p><strong>Bivariate EDA</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -955,6 +996,19 @@ memory usage: 7.0+ KB
 <img alt="_images/c84275efd1e0637301be63d0957678e0868b0dcd953e0eed99e3d9538a337baa.png" src="_images/c84275efd1e0637301be63d0957678e0868b0dcd953e0eed99e3d9538a337baa.png" />
 </div>
 </div>
+<p>membuat subplots (subplot) dalam bentuk grid 2x2 dan menampilkan boxplot (diagram kotak) untuk masing-masing fitur (feature) dalam dataset Iris, berdasarkan kelas target (Species).</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">fig,</span> <span class="pre">ax</span> <span class="pre">=</span> <span class="pre">plt.subplots(nrows=2,</span> <span class="pre">ncols=2,</span> <span class="pre">figsize=(16,10))</span></code> digunakan untuk membuat subplot dalam bentuk grid 2x2 dengan ukuran gambar (figsize) 16x10. Variabel <code class="docutils literal notranslate"><span class="pre">fig</span></code> akan menyimpan objek gambar dan variabel <code class="docutils literal notranslate"><span class="pre">ax</span></code> akan menyimpan array berisi sumbu-sumbu subplot.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">row</span> <span class="pre">=</span> <span class="pre">0</span></code> dan <code class="docutils literal notranslate"><span class="pre">col</span> <span class="pre">=</span> <span class="pre">0</span></code> digunakan untuk mengatur baris dan kolom awal dalam grid subplot.</p></li>
+<li><p>Melalui loop <code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">i</span> <span class="pre">in</span> <span class="pre">range(len(iris_data.columns)</span> <span class="pre">-</span> <span class="pre">1):</span></code>, setiap fitur (kecuali kolom “Species”) akan diproses secara iteratif.</p></li>
+<li><p>Pada blok if <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">col</span> <span class="pre">&gt;</span> <span class="pre">1:</span></code>, jika kolom melebihi 1, maka akan dilakukan penyesuaian untuk pindah ke baris berikutnya.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">axes</span> <span class="pre">=</span> <span class="pre">ax[row,</span> <span class="pre">col]</span></code> digunakan untuk mengakses sumbu subplot yang sesuai dengan posisi baris dan kolom saat ini.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sns.boxplot(x=iris_data['Species'],</span> <span class="pre">y=iris_data[iris_data.columns[i]],</span> <span class="pre">ax=axes)</span></code> digunakan untuk membuat boxplot menggunakan fungsi <code class="docutils literal notranslate"><span class="pre">boxplot()</span></code> dari library Seaborn. Parameter <code class="docutils literal notranslate"><span class="pre">x=iris_data['Species']</span></code> menentukan variabel yang akan digunakan sebagai sumbu x, yaitu kolom “Species” dalam dataset Iris. Parameter <code class="docutils literal notranslate"><span class="pre">y=iris_data[iris_data.columns[i]]</span></code> menentukan variabel yang akan digunakan sebagai sumbu y, yaitu fitur yang sedang diproses saat ini. Parameter <code class="docutils literal notranslate"><span class="pre">ax=axes</span></code> digunakan untuk menentukan sumbu subplot yang akan digunakan untuk plot.</p></li>
+<li><p>Setelah melakukan plotting pada satu subplot, nilai kolom akan diperbarui dengan <code class="docutils literal notranslate"><span class="pre">col</span> <span class="pre">+=</span> <span class="pre">1</span></code> untuk beralih ke kolom berikutnya.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">plt.tight_layout()</span></code> digunakan untuk mengoptimalkan tata letak subplot agar lebih rapi.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">plt.show()</span></code> digunakan untuk menampilkan plot yang telah dibuat.</p></li>
+</ul>
+<p>Dengan menjalankan code tersebut, akan ditampilkan subplot dalam bentuk grid 2x2, di mana setiap subplot akan menampilkan boxplot untuk masing-masing fitur dalam dataset Iris, dibedakan berdasarkan kelas target (Species). Hal ini berguna untuk memvisualisasikan distribusi dan variabilitas fitur-fitur dalam setiap kelas target.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">p</span><span class="o">=</span><span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">iris_data</span><span class="p">,</span> <span class="n">hue</span> <span class="o">=</span> <span class="s1">&#39;Species&#39;</span><span class="p">)</span>
@@ -965,6 +1019,12 @@ memory usage: 7.0+ KB
 <img alt="_images/082400ded605f6d34d79a852f9d7185d37e9de3e3a71d2208bf8a3b42a6ed1e4.png" src="_images/082400ded605f6d34d79a852f9d7185d37e9de3e3a71d2208bf8a3b42a6ed1e4.png" />
 </div>
 </div>
+<p>membuat pairplot (plot pasangan) untuk masing-masing kombinasi fitur dalam dataset Iris, dengan pewarnaan (hue) berdasarkan kelas target (Species).</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">p</span> <span class="pre">=</span> <span class="pre">sns.pairplot(iris_data,</span> <span class="pre">hue='Species')</span></code> digunakan untuk membuat pairplot menggunakan fungsi <code class="docutils literal notranslate"><span class="pre">pairplot()</span></code> dari library Seaborn. Parameter <code class="docutils literal notranslate"><span class="pre">iris_data</span></code> menentukan DataFrame yang akan digunakan sebagai sumber data untuk plot. Parameter <code class="docutils literal notranslate"><span class="pre">hue='Species'</span></code> digunakan untuk menerapkan pewarnaan berdasarkan kolom “Species”, sehingga setiap kelas target akan ditampilkan dengan warna yang berbeda pada pairplot.</p></li>
+<li><p>Variabel <code class="docutils literal notranslate"><span class="pre">p</span></code> akan menyimpan objek PairGrid yang dibuat oleh fungsi <code class="docutils literal notranslate"><span class="pre">pairplot()</span></code>. Objek ini dapat digunakan untuk melakukan penyesuaian tambahan pada plot, jika diperlukan.</p></li>
+</ul>
+<p>Dengan menjalankan code tersebut, akan ditampilkan pairplot yang menampilkan scatter plot untuk masing-masing kombinasi fitur dalam dataset Iris. Setiap titik pada scatter plot akan mewakili satu sampel, dengan sumbu x dan y yang mewakili dua fitur yang dipilih. Pewarnaan berdasarkan kelas target (Species) akan membedakan sampel-sampel dari setiap kelas. Pairplot sangat berguna untuk melihat hubungan antara fitur-fitur dalam dataset dan membantu dalam pemahaman pola dan keterkaitan antara variabel-variabel tersebut.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">15</span><span class="p">))</span>
@@ -976,6 +1036,13 @@ memory usage: 7.0+ KB
 <img alt="_images/caabd617bec449786781216cc96d12101901985e338706b094948e57e0cc0a3b.png" src="_images/caabd617bec449786781216cc96d12101901985e338706b094948e57e0cc0a3b.png" />
 </div>
 </div>
+<p>membuat heatmap (peta panas) dari matriks korelasi antara fitur-fitur dalam dataset Iris.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">plt.figure(figsize=(15,</span> <span class="pre">15))</span></code> digunakan untuk membuat gambar dengan ukuran (figsize) 15x15 menggunakan fungsi <code class="docutils literal notranslate"><span class="pre">figure()</span></code> dari library Matplotlib.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">p</span> <span class="pre">=</span> <span class="pre">sns.heatmap(iris_data.corr(),</span> <span class="pre">annot=True,</span> <span class="pre">cmap='RdYlGn')</span></code> digunakan untuk membuat heatmap menggunakan fungsi <code class="docutils literal notranslate"><span class="pre">heatmap()</span></code> dari library Seaborn. Parameter <code class="docutils literal notranslate"><span class="pre">iris_data.corr()</span></code> digunakan untuk mendapatkan matriks korelasi antara semua fitur dalam dataset Iris. Parameter <code class="docutils literal notranslate"><span class="pre">annot=True</span></code> digunakan untuk menampilkan angka pada heatmap yang menunjukkan nilai korelasi. Parameter <code class="docutils literal notranslate"><span class="pre">cmap='RdYlGn'</span></code> digunakan untuk memilih skema warna yang akan digunakan dalam heatmap.</p></li>
+<li><p>Variabel <code class="docutils literal notranslate"><span class="pre">p</span></code> akan menyimpan objek heatmap yang dibuat oleh fungsi <code class="docutils literal notranslate"><span class="pre">heatmap()</span></code>. Objek ini dapat digunakan untuk melakukan penyesuaian tambahan pada plot, jika diperlukan.</p></li>
+</ul>
+<p>Dengan menjalankan code tersebut, akan ditampilkan heatmap yang menunjukkan tingkat korelasi antara fitur-fitur dalam dataset Iris. Setiap sel pada heatmap akan diwarnai berdasarkan nilai korelasi, dan angka di dalam setiap sel akan menunjukkan nilai korelasi tersebut. Heatmap sangat berguna untuk memvisualisasikan pola korelasi antara variabel-variabel dan membantu dalam pemahaman hubungan antara fitur-fitur dalam dataset.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">iris_data</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">12</span><span class="p">),</span><span class="n">bins</span> <span class="o">=</span> <span class="mi">15</span><span class="p">)</span>
@@ -988,6 +1055,13 @@ memory usage: 7.0+ KB
 <img alt="_images/98b864865e2f671bb1103550005d2aa0e829da861918558035d5b097faf1069e.png" src="_images/98b864865e2f671bb1103550005d2aa0e829da861918558035d5b097faf1069e.png" />
 </div>
 </div>
+<p>membuat histogram distribusi fitur-fitur dalam dataset Iris.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">iris_data.hist(figsize=(15,</span> <span class="pre">12),</span> <span class="pre">bins=15)</span></code> digunakan untuk membuat histogram distribusi menggunakan fungsi <code class="docutils literal notranslate"><span class="pre">hist()</span></code> dari Pandas pada objek DataFrame <code class="docutils literal notranslate"><span class="pre">iris_data</span></code>. Parameter <code class="docutils literal notranslate"><span class="pre">figsize=(15,</span> <span class="pre">12)</span></code> digunakan untuk menentukan ukuran gambar (figsize) 15x12 untuk menampung histogram. Parameter <code class="docutils literal notranslate"><span class="pre">bins=15</span></code> digunakan untuk menentukan jumlah bins (kelompok) yang akan digunakan dalam histogram.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">plt.title(&quot;Features</span> <span class="pre">Distribution&quot;)</span></code> digunakan untuk memberi judul pada gambar histogram dengan teks “Features Distribution”.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">plt.show()</span></code> digunakan untuk menampilkan gambar histogram.</p></li>
+</ul>
+<p>Dengan menjalankan code tersebut, akan ditampilkan histogram distribusi untuk masing-masing fitur dalam dataset Iris. Histogram adalah grafik yang menunjukkan frekuensi kemunculan nilai-nilai dalam sebuah distribusi. Dengan melihat histogram, kita dapat memahami sebaran data dan pola distribusi dari setiap fitur dalam dataset.</p>
 <p><strong>Modelling</strong></p>
 <p><strong>1. Without PCA</strong></p>
 <div class="cell docutils container">
@@ -998,6 +1072,12 @@ memory usage: 7.0+ KB
 </div>
 </div>
 </div>
+<p>memisahkan dataset Iris menjadi dua bagian: fitur-fitur (X) dan target (y).</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">X</span> <span class="pre">=</span> <span class="pre">iris_data.drop(['Species'],</span> <span class="pre">axis=1)</span></code> digunakan untuk mengambil subset dataset Iris yang terdiri dari semua kolom kecuali kolom “Species”. Fungsi <code class="docutils literal notranslate"><span class="pre">drop()</span></code> dari Pandas digunakan untuk menghapus kolom “Species” dari DataFrame <code class="docutils literal notranslate"><span class="pre">iris_data</span></code>. Parameter <code class="docutils literal notranslate"><span class="pre">axis=1</span></code> menunjukkan bahwa yang dihapus adalah kolom (axis=1) bukan baris (axis=0).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">y</span> <span class="pre">=</span> <span class="pre">iris_data.Species</span></code> digunakan untuk mengambil kolom “Species” dari DataFrame <code class="docutils literal notranslate"><span class="pre">iris_data</span></code> sebagai target (y). Kolom ini akan berisi label kelas untuk setiap sampel dalam dataset.</p></li>
+</ul>
+<p>Dengan menjalankan code tersebut, akan dibentuk dua variabel <code class="docutils literal notranslate"><span class="pre">X</span></code> yang berisi fitur-fitur dataset Iris tanpa kolom “Species”, dan <code class="docutils literal notranslate"><span class="pre">y</span></code> yang berisi label kelas dari dataset Iris. Hal ini mempersiapkan data untuk pemodelan dan pemisahan antara fitur dan target yang diperlukan dalam proses pembelajaran mesin.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="kn">import</span> <span class="n">MinMaxScaler</span>
@@ -1007,6 +1087,13 @@ memory usage: 7.0+ KB
 </div>
 </div>
 </div>
+<p>melakukan penskalaan fitur menggunakan Min-Max Scaler pada dataset Iris.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">sklearn.preprocessing</span> <span class="pre">import</span> <span class="pre">MinMaxScaler</span></code> digunakan untuk mengimpor kelas MinMaxScaler dari library Scikit-learn. MinMaxScaler adalah salah satu metode penskalaan yang digunakan untuk mengubah fitur-fitur dalam rentang tertentu.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">scaler</span> <span class="pre">=</span> <span class="pre">MinMaxScaler()</span></code> digunakan untuk membuat objek scaler dari kelas MinMaxScaler.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">X</span> <span class="pre">=</span> <span class="pre">scaler.fit_transform(X)</span></code> digunakan untuk melakukan penskalaan fitur-fitur dalam dataset Iris menggunakan metode Min-Max Scaler. Metode <code class="docutils literal notranslate"><span class="pre">fit_transform()</span></code> dari objek scaler akan menghitung statistik penskalaan (misalnya, nilai minimum dan maksimum) dari fitur-fitur yang ada dalam dataset dan kemudian melakukan penskalaan pada fitur-fitur tersebut dengan memastikan bahwa nilai-nilai fitur berada dalam rentang yang diinginkan (biasanya 0 hingga 1).</p></li>
+</ul>
+<p>Dengan menjalankan code tersebut, fitur-fitur dalam dataset Iris akan disesuaikan menjadi rentang 0 hingga 1 menggunakan Min-Max Scaler. Hal ini berguna dalam memastikan konsistensi skala fitur-fitur yang berbeda, yang dapat mempengaruhi performa algoritma pembelajaran mesin yang digunakan.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span> <span class="o">=</span> <span class="mf">0.3</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">stratify</span><span class="o">=</span><span class="n">y</span><span class="p">)</span>
@@ -1014,6 +1101,11 @@ memory usage: 7.0+ KB
 </div>
 </div>
 </div>
+<p>membagi dataset Iris menjadi data latih (train) dan data uji (test) menggunakan fungsi <code class="docutils literal notranslate"><span class="pre">train_test_split()</span></code> dari library Scikit-learn.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">X_train,</span> <span class="pre">X_test,</span> <span class="pre">y_train,</span> <span class="pre">y_test</span> <span class="pre">=</span> <span class="pre">train_test_split(X,</span> <span class="pre">y,</span> <span class="pre">test_size=0.3,</span> <span class="pre">random_state=20,</span> <span class="pre">stratify=y)</span></code> digunakan untuk membagi fitur (X) dan target (y) dari dataset Iris menjadi empat subset: X_train, X_test, y_train, y_test. Parameter <code class="docutils literal notranslate"><span class="pre">X</span></code> dan <code class="docutils literal notranslate"><span class="pre">y</span></code> merupakan input data yang akan dibagi. Parameter <code class="docutils literal notranslate"><span class="pre">test_size=0.3</span></code> menentukan proporsi data yang akan digunakan sebagai data uji, dalam hal ini 30% dari keseluruhan data. Parameter <code class="docutils literal notranslate"><span class="pre">random_state=20</span></code> digunakan untuk mengatur seed (bilangan acak awal) yang digunakan dalam pembagian data, sehingga hasil pembagian data dapat direproduksi dengan cara yang sama. Parameter <code class="docutils literal notranslate"><span class="pre">stratify=y</span></code> digunakan untuk memastikan bahwa pembagian data mempertahankan proporsi kelas target yang sama di antara data latih dan data uji.</p></li>
+</ul>
+<p>Dengan menjalankan code tersebut, dataset Iris akan dibagi menjadi data latih (X_train, y_train) yang akan digunakan untuk melatih model, dan data uji (X_test, y_test) yang akan digunakan untuk mengevaluasi kinerja model. Pembagian data ini penting untuk menguji sejauh mana model yang dilatih mampu melakukan generalisasi pada data yang belum pernah dilihat sebelumnya.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">knn</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
@@ -1030,6 +1122,14 @@ Test score before PCA 0.9777777777777777 %
 </div>
 </div>
 </div>
+<p>melatih model K-Nearest Neighbors (KNN) pada data latih dan mengevaluasi kinerjanya pada data uji.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">knn</span> <span class="pre">=</span> <span class="pre">KNeighborsClassifier(7)</span></code> digunakan untuk membuat objek model KNN dengan parameter <code class="docutils literal notranslate"><span class="pre">n_neighbors=7</span></code>. Angka 7 menunjukkan jumlah tetangga terdekat yang akan digunakan oleh model untuk melakukan klasifikasi.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">knn.fit(X_train,</span> <span class="pre">y_train)</span></code> digunakan untuk melatih model KNN dengan menggunakan data latih <code class="docutils literal notranslate"><span class="pre">X_train</span></code> dan label kelas <code class="docutils literal notranslate"><span class="pre">y_train</span></code>. Model akan mempelajari pola dalam data latih untuk dapat melakukan klasifikasi pada data yang belum pernah dilihat sebelumnya.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">print(&quot;Train</span> <span class="pre">score</span> <span class="pre">before</span> <span class="pre">PCA&quot;,</span> <span class="pre">knn.score(X_train,</span> <span class="pre">y_train),</span> <span class="pre">&quot;%&quot;)</span></code> digunakan untuk mencetak skor akurasi model KNN pada data latih. Skor akurasi menunjukkan sejauh mana model dapat memprediksi dengan benar label kelas pada data latih.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">print(&quot;Test</span> <span class="pre">score</span> <span class="pre">before</span> <span class="pre">PCA&quot;,</span> <span class="pre">knn.score(X_test,</span> <span class="pre">y_test),</span> <span class="pre">&quot;%&quot;)</span></code> digunakan untuk mencetak skor akurasi model KNN pada data uji. Skor akurasi ini menunjukkan sejauh mana model dapat memprediksi dengan benar label kelas pada data uji yang belum pernah dilihat sebelumnya.</p></li>
+</ul>
+<p>Dengan menjalankan code tersebut, akan dicetak skor akurasi model KNN pada data latih dan data uji sebelum proses PCA (Principal Component Analysis) dilakukan. Skor akurasi ini memberikan gambaran tentang kinerja awal model sebelum melakukan pengurangan dimensi dengan PCA.</p>
 <p><strong>2. With PCA</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1040,6 +1140,12 @@ Test score before PCA 0.9777777777777777 %
 </div>
 </div>
 </div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">sklearn.decomposition</span> <span class="pre">import</span> <span class="pre">PCA</span></code> digunakan untuk mengimpor kelas PCA dari library Scikit-learn. PCA adalah salah satu metode yang digunakan untuk melakukan reduksi dimensi dalam analisis data.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pca</span> <span class="pre">=</span> <span class="pre">PCA()</span></code> digunakan untuk membuat objek PCA.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">X_new</span> <span class="pre">=</span> <span class="pre">pca.fit_transform(X)</span></code> digunakan untuk menerapkan PCA pada fitur-fitur dalam dataset Iris. Metode <code class="docutils literal notranslate"><span class="pre">fit_transform()</span></code> dari objek PCA akan menghitung komponen-komponen utama (principal components) yang merupakan kombinasi linear dari fitur-fitur awal. Data fitur yang baru, yang disebut <code class="docutils literal notranslate"><span class="pre">X_new</span></code>, akan terdiri dari hasil transformasi PCA dari fitur-fitur awal.</p></li>
+</ul>
+<p>Dengan menjalankan code tersebut, fitur-fitur dalam dataset Iris akan direduksi dimensinya menggunakan PCA. Hal ini berguna untuk mengurangi kompleksitas data dan mengidentifikasi komponen-komponen utama yang paling berkontribusi dalam menjelaskan variasi dalam data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pca</span><span class="o">.</span><span class="n">get_covariance</span><span class="p">()</span>
@@ -1055,6 +1161,8 @@ Test score before PCA 0.9777777777777777 %
 </div>
 </div>
 </div>
+<p>pca.get_covariance() digunakan untuk mengambil matriks kovarian dari data setelah transformasi PCA. Matriks kovarian merupakan matriks yang berisi kovarian antara setiap pasangan fitur dalam dataset.
+Dengan menjalankan code tersebut, akan dihasilkan matriks kovarian yang menunjukkan hubungan antara fitur-fitur dalam data setelah dilakukan reduksi dimensi dengan PCA. Matriks ini memberikan informasi tentang hubungan linier antara fitur-fitur yang terdapat dalam data setelah proses transformasi PCA dilakukan.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">explained_variance</span><span class="o">=</span><span class="n">pca</span><span class="o">.</span><span class="n">explained_variance_ratio_</span>
@@ -1068,6 +1176,11 @@ Test score before PCA 0.9777777777777777 %
 </div>
 </div>
 </div>
+<p>menghitung rasio varian yang dijelaskan oleh setiap komponen utama (principal component) setelah melakukan reduksi dimensi dengan PCA.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">explained_variance</span> <span class="pre">=</span> <span class="pre">pca.explained_variance_ratio_</span></code> digunakan untuk mengambil array dari rasio varian yang dijelaskan oleh setiap komponen utama. Setiap elemen dalam array ini menunjukkan proporsi varian yang dijelaskan oleh komponen utama terkait.</p></li>
+</ul>
+<p>Dengan menjalankan code tersebut, akan dihasilkan array yang berisi rasio varian yang dijelaskan oleh setiap komponen utama. Rasio varian ini memberikan informasi tentang kontribusi relatif dari setiap komponen utama dalam menjelaskan variasi dalam data setelah dilakukan reduksi dimensi dengan PCA.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">context</span><span class="p">(</span><span class="s1">&#39;dark_background&#39;</span><span class="p">):</span>
@@ -1086,6 +1199,17 @@ Test score before PCA 0.9777777777777777 %
 <img alt="_images/7f1b93f82b6949f72259cf0ee4719a7c38fd2c63c23cf2d4ff6fa3136287de2b.png" src="_images/7f1b93f82b6949f72259cf0ee4719a7c38fd2c63c23cf2d4ff6fa3136287de2b.png" />
 </div>
 </div>
+<p>membuat grafik batang yang menunjukkan rasio varian yang dijelaskan oleh setiap komponen utama (principal component) setelah reduksi dimensi dengan PCA.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">with</span> <span class="pre">plt.style.context('dark_background'):</span></code> digunakan untuk mengatur gaya latar belakang plot menjadi ‘dark_background’, memberikan tampilan latar belakang yang gelap.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">plt.figure(figsize=(6,</span> <span class="pre">4))</span></code> digunakan untuk membuat objek gambar dengan ukuran 6x4 inci.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">plt.bar(range(4),</span> <span class="pre">explained_variance,</span> <span class="pre">alpha=0.5,</span> <span class="pre">align='center',</span> <span class="pre">label='individual</span> <span class="pre">explained</span> <span class="pre">variance')</span></code> digunakan untuk membuat grafik batang dengan sumbu x sebagai nomor komponen utama (0, 1, 2, 3) dan sumbu y sebagai rasio varian yang dijelaskan. Setiap batang menunjukkan rasio varian yang dijelaskan oleh komponen utama terkait. Parameter <code class="docutils literal notranslate"><span class="pre">alpha=0.5</span></code> mengatur transparansi batang menjadi 0.5 untuk efek visual. Parameter <code class="docutils literal notranslate"><span class="pre">align='center'</span></code> mengatur posisi batang pada sumbu x menjadi tengah-tengah tiap komponen utama. Parameter <code class="docutils literal notranslate"><span class="pre">label='individual</span> <span class="pre">explained</span> <span class="pre">variance'</span></code> memberikan label pada legenda grafik.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">plt.ylabel('Explained</span> <span class="pre">variance</span> <span class="pre">ratio')</span></code> digunakan untuk memberikan label pada sumbu y sebagai ‘Explained variance ratio’ (rasio varian yang dijelaskan).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">plt.xlabel('Principal</span> <span class="pre">components')</span></code> digunakan untuk memberikan label pada sumbu x sebagai ‘Principal components’ (komponen utama).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">plt.legend(loc='best')</span></code> digunakan untuk menampilkan legenda dengan lokasi yang dianggap terbaik (tergantung pada tata letak plot).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">plt.tight_layout()</span></code> digunakan untuk mengoptimalkan tata letak plot agar lebih rapi.</p></li>
+</ul>
+<p>Dengan menjalankan code tersebut, akan dihasilkan grafik batang yang menunjukkan rasio varian yang dijelaskan oleh setiap komponen utama setelah dilakukan reduksi dimensi dengan PCA. Grafik ini membantu dalam memahami kontribusi relatif dari setiap komponen utama dalam menjelaskan variasi dalam data setelah transformasi PCA.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pca</span><span class="o">=</span><span class="n">PCA</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
@@ -1094,6 +1218,12 @@ Test score before PCA 0.9777777777777777 %
 </div>
 </div>
 </div>
+<p>melakukan reduksi dimensi pada dataset Iris menggunakan metode Principal Component Analysis (PCA) dengan mengatur jumlah komponen utama yang diinginkan.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">pca</span> <span class="pre">=</span> <span class="pre">PCA(n_components=3)</span></code> digunakan untuk membuat objek PCA dengan mengatur parameter <code class="docutils literal notranslate"><span class="pre">n_components</span></code> menjadi 3. Ini berarti kita ingin mempertahankan 3 komponen utama teratas yang paling mewakili variasi dalam data.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">X_new</span> <span class="pre">=</span> <span class="pre">pca.fit_transform(X)</span></code> digunakan untuk menerapkan PCA pada fitur-fitur dalam dataset Iris dengan menggunakan 3 komponen utama. Metode <code class="docutils literal notranslate"><span class="pre">fit_transform()</span></code> dari objek PCA akan menghitung komponen utama dan melakukan transformasi data fitur ke dalam ruang komponen utama yang baru. Hasil transformasi ini akan disimpan dalam variabel <code class="docutils literal notranslate"><span class="pre">X_new</span></code>.</p></li>
+</ul>
+<p>Dengan menjalankan code tersebut, fitur-fitur dalam dataset Iris akan direduksi dimensinya menggunakan PCA, dengan hanya mempertahankan 3 komponen utama teratas. Hal ini berguna untuk mengurangi kompleksitas data dan fokus pada fitur-fitur yang paling berkontribusi dalam menjelaskan variasi dalam data.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_train_new</span><span class="p">,</span> <span class="n">X_test_new</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X_new</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span> <span class="o">=</span> <span class="mf">0.3</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">stratify</span><span class="o">=</span><span class="n">y</span><span class="p">)</span>
@@ -1101,6 +1231,11 @@ Test score before PCA 0.9777777777777777 %
 </div>
 </div>
 </div>
+<p>membagi dataset yang sudah direduksi dimensinya menggunakan PCA menjadi data latih (training data) dan data uji (testing data).</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">X_train_new,</span> <span class="pre">X_test_new,</span> <span class="pre">y_train,</span> <span class="pre">y_test</span> <span class="pre">=</span> <span class="pre">train_test_split(X_new,</span> <span class="pre">y,</span> <span class="pre">test_size</span> <span class="pre">=</span> <span class="pre">0.3,</span> <span class="pre">random_state=20,</span> <span class="pre">stratify=y)</span></code> digunakan untuk membagi data <code class="docutils literal notranslate"><span class="pre">X_new</span></code> (fitur-fitur yang sudah direduksi dimensinya menggunakan PCA) dan <code class="docutils literal notranslate"><span class="pre">y</span></code> (variabel target) menjadi data latih dan data uji. Parameter <code class="docutils literal notranslate"><span class="pre">test_size=0.3</span></code> mengatur ukuran data uji sebesar 30% dari total data. Parameter <code class="docutils literal notranslate"><span class="pre">random_state=20</span></code> digunakan untuk mengatur seed dalam pembagian data, sehingga memastikan bahwa pembagian data yang sama dapat direproduksi. Parameter <code class="docutils literal notranslate"><span class="pre">stratify=y</span></code> digunakan untuk memastikan bahwa proporsi kelas dalam variabel target <code class="docutils literal notranslate"><span class="pre">y</span></code> dipertahankan secara proporsional antara data latih dan data uji.</p></li>
+</ul>
+<p>Dengan menjalankan code tersebut, akan dihasilkan empat variabel: <code class="docutils literal notranslate"><span class="pre">X_train_new</span></code> (fitur-fitur data latih setelah reduksi dimensi menggunakan PCA), <code class="docutils literal notranslate"><span class="pre">X_test_new</span></code> (fitur-fitur data uji setelah reduksi dimensi menggunakan PCA), <code class="docutils literal notranslate"><span class="pre">y_train</span></code> (variabel target data latih), dan <code class="docutils literal notranslate"><span class="pre">y_test</span></code> (variabel target data uji). Data latih dan data uji dapat digunakan untuk melatih dan menguji model klasifikasi pada dataset Iris yang sudah direduksi dimensinya menggunakan PCA.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">knn_pca</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span>
@@ -1117,6 +1252,14 @@ Test score after PCA 0.9777777777777777 %
 </div>
 </div>
 </div>
+<p>melatih dan menguji model klasifikasi K-Nearest Neighbors (KNN) setelah dilakukan reduksi dimensi menggunakan PCA pada dataset Iris.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">knn_pca</span> <span class="pre">=</span> <span class="pre">KNeighborsClassifier(7)</span></code> digunakan untuk membuat objek model KNN dengan <code class="docutils literal notranslate"><span class="pre">n_neighbors=7</span></code>, yaitu menggunakan 7 tetangga terdekat untuk melakukan klasifikasi.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">knn_pca.fit(X_train_new,y_train)</span></code> digunakan untuk melatih model KNN dengan fitur-fitur data latih yang sudah direduksi dimensinya menggunakan PCA (<code class="docutils literal notranslate"><span class="pre">X_train_new</span></code>) dan variabel target data latih (<code class="docutils literal notranslate"><span class="pre">y_train</span></code>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">knn_pca.score(X_train_new,y_train)</span></code> digunakan untuk menghitung skor akurasi model KNN pada data latih setelah dilakukan reduksi dimensi menggunakan PCA.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">knn_pca.score(X_test_new,y_test)</span></code> digunakan untuk menghitung skor akurasi model KNN pada data uji setelah dilakukan reduksi dimensi menggunakan PCA.</p></li>
+</ul>
+<p>Dengan menjalankan code tersebut, akan ditampilkan skor akurasi model KNN pada data latih dan data uji setelah dilakukan reduksi dimensi menggunakan PCA. Skor akurasi ini merupakan proporsi prediksi yang benar terhadap jumlah total sampel. Semakin tinggi skor akurasi, semakin baik performa model dalam melakukan klasifikasi pada dataset Iris yang sudah direduksi dimensinya menggunakan PCA.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Visualising the Test set results</span>
@@ -1148,6 +1291,14 @@ Test score after PCA 0.9777777777777777 %
 <img alt="_images/e066e7d6f552db6dedaeede77200d4a70ada8e013fb74567314ea8ce03b4ee9b.png" src="_images/e066e7d6f552db6dedaeede77200d4a70ada8e013fb74567314ea8ce03b4ee9b.png" />
 </div>
 </div>
+<p>melatih dan menguji model klasifikasi K-Nearest Neighbors (KNN) setelah dilakukan reduksi dimensi menggunakan PCA pada dataset Iris.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">knn_pca</span> <span class="pre">=</span> <span class="pre">KNeighborsClassifier(7)</span></code> digunakan untuk membuat objek model KNN dengan <code class="docutils literal notranslate"><span class="pre">n_neighbors=7</span></code>, yaitu menggunakan 7 tetangga terdekat untuk melakukan klasifikasi.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">knn_pca.fit(X_train_new,y_train)</span></code> digunakan untuk melatih model KNN dengan fitur-fitur data latih yang sudah direduksi dimensinya menggunakan PCA (<code class="docutils literal notranslate"><span class="pre">X_train_new</span></code>) dan variabel target data latih (<code class="docutils literal notranslate"><span class="pre">y_train</span></code>).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">knn_pca.score(X_train_new,y_train)</span></code> digunakan untuk menghitung skor akurasi model KNN pada data latih setelah dilakukan reduksi dimensi menggunakan PCA.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">knn_pca.score(X_test_new,y_test)</span></code> digunakan untuk menghitung skor akurasi model KNN pada data uji setelah dilakukan reduksi dimensi menggunakan PCA.</p></li>
+</ul>
+<p>Dengan menjalankan code tersebut, akan ditampilkan skor akurasi model KNN pada data latih dan data uji setelah dilakukan reduksi dimensi menggunakan PCA. Skor akurasi ini merupakan proporsi prediksi yang benar terhadap jumlah total sampel. Semakin tinggi skor akurasi, semakin baik performa model dalam melakukan klasifikasi pada dataset Iris yang sudah direduksi dimensinya menggunakan PCA.</p>
 </div>
 
     <script type="text/x-thebe-config">

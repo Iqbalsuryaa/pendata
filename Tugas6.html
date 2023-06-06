@@ -406,6 +406,12 @@ document.write(`
 </div>
 </div>
 </div>
+<p>Library numpy (diimport sebagai np) digunakan untuk melakukan operasi matematika dan manipulasi array.</p>
+<p>Library pandas (diimport sebagai pd) digunakan untuk membaca dan memanipulasi data dalam bentuk tabel, seperti membaca file CSV dan melakukan operasi pada dataframe.</p>
+<p>Library seaborn (diimport sebagai sns) digunakan untuk visualisasi data.</p>
+<p>Modul MLPClassifier dari library sklearn.neural_network digunakan untuk membuat model jaringan saraf tiruan berdasarkan algoritma MLP (Multilayer Perceptron).</p>
+<p>Modul train_test_split dari library sklearn.model_selection digunakan untuk membagi data menjadi subset pelatihan dan pengujian.</p>
+<p>Modul metrics dari library sklearn digunakan untuk mengukur kinerja model.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
@@ -414,7 +420,7 @@ document.write(`
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-773b2774-76d4-4573-9827-04b1e5a69423">
+  <div id="df-47973921-0914-490e-9d09-2ba6ab342f7e">
     <div class="colab-df-container">
       <div>
 <style scoped>
@@ -491,7 +497,7 @@ document.write(`
   </tbody>
 </table>
 </div>
-      <button class="colab-df-convert" onclick="convertToInteractive('df-773b2774-76d4-4573-9827-04b1e5a69423')"
+      <button class="colab-df-convert" onclick="convertToInteractive('df-47973921-0914-490e-9d09-2ba6ab342f7e')"
               title="Convert this dataframe to an interactive table."
               style="display:none;">
         
@@ -542,12 +548,12 @@ document.write(`
 
       <script>
         const buttonEl =
-          document.querySelector('#df-773b2774-76d4-4573-9827-04b1e5a69423 button.colab-df-convert');
+          document.querySelector('#df-47973921-0914-490e-9d09-2ba6ab342f7e button.colab-df-convert');
         buttonEl.style.display =
           google.colab.kernel.accessAllowed ? 'block' : 'none';
 
         async function convertToInteractive(key) {
-          const element = document.querySelector('#df-773b2774-76d4-4573-9827-04b1e5a69423');
+          const element = document.querySelector('#df-47973921-0914-490e-9d09-2ba6ab342f7e');
           const dataTable =
             await google.colab.kernel.invokeFunction('convertToInteractive',
                                                      [key], {});
@@ -568,6 +574,7 @@ document.write(`
   </div>
   </div></div>
 </div>
+<p>Dengan menggunakan metode head() pada objek data, program akan menampilkan 5 baris pertama dari dataframe data. Ini berguna untuk melihat cuplikan data dan memastikan bahwa data telah terbaca dengan benar.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="nb">vars</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;SepalLengthCm&#39;</span><span class="p">,</span><span class="s1">&#39;SepalWidthCm&#39;</span><span class="p">,</span><span class="s1">&#39;PetalLengthCm&#39;</span><span class="p">,</span><span class="s1">&#39;PetalWidthCm&#39;</span><span class="p">),</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;Species&#39;</span> <span class="p">)</span>
@@ -575,12 +582,18 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7f50ae847f70&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;seaborn.axisgrid.PairGrid at 0x7f05e6a8bfd0&gt;
 </pre></div>
 </div>
 <img alt="_images/dac70906583fdfcf332745acc457e4c668987ac2dfbc72432f8b87ea3178e993.png" src="_images/dac70906583fdfcf332745acc457e4c668987ac2dfbc72432f8b87ea3178e993.png" />
 </div>
 </div>
+<p>matriks pairplot yang memvisualisasikan hubungan antara setiap pasangan fitur dalam dataset data.</p>
+<p>data=data mengindikasikan bahwa data yang akan digunakan adalah dataframe data yang telah dibaca sebelumnya.</p>
+<p>vars=(‘SepalLengthCm’,’SepalWidthCm’,’PetalLengthCm’,’PetalWidthCm’) menentukan variabel-variabel yang akan digunakan untuk membuat pairplot. Dalam hal ini, SepalLengthCm, SepalWidthCm, PetalLengthCm, dan PetalWidthCm dipilih sebagai variabel yang ingin divisualisasikan.</p>
+<p>hue=’Species’ digunakan untuk membedakan setiap spesies di plot dengan memberikan warna yang berbeda. Variabel ‘Species’ akan digunakan sebagai faktor yang membedakan warna di plot.</p>
+<p>Dengan menjalankan code tersebut, akan dihasilkan matriks pairplot yang terdiri dari subplot-subplot yang menampilkan hubungan antara setiap pasangan fitur (SepalLengthCm, SepalWidthCm, PetalLengthCm, dan PetalWidthCm) dalam dataset.</p>
+<p>subplot akan diberi warna berbeda berdasarkan spesiesnya, sehingga memudahkan untuk melihat pola atau korelasi antara fitur-fitur tersebut.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
@@ -589,7 +602,7 @@ document.write(`
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-41605d6f-eecd-48e9-9ff9-a6af47b7d6cb">
+  <div id="df-54e4fd89-12d4-4db3-875b-8e91b3458858">
     <div class="colab-df-container">
       <div>
 <style scoped>
@@ -684,7 +697,7 @@ document.write(`
   </tbody>
 </table>
 </div>
-      <button class="colab-df-convert" onclick="convertToInteractive('df-41605d6f-eecd-48e9-9ff9-a6af47b7d6cb')"
+      <button class="colab-df-convert" onclick="convertToInteractive('df-54e4fd89-12d4-4db3-875b-8e91b3458858')"
               title="Convert this dataframe to an interactive table."
               style="display:none;">
         
@@ -735,12 +748,12 @@ document.write(`
 
       <script>
         const buttonEl =
-          document.querySelector('#df-41605d6f-eecd-48e9-9ff9-a6af47b7d6cb button.colab-df-convert');
+          document.querySelector('#df-54e4fd89-12d4-4db3-875b-8e91b3458858 button.colab-df-convert');
         buttonEl.style.display =
           google.colab.kernel.accessAllowed ? 'block' : 'none';
 
         async function convertToInteractive(key) {
-          const element = document.querySelector('#df-41605d6f-eecd-48e9-9ff9-a6af47b7d6cb');
+          const element = document.querySelector('#df-54e4fd89-12d4-4db3-875b-8e91b3458858');
           const dataTable =
             await google.colab.kernel.invokeFunction('convertToInteractive',
                                                      [key], {});
@@ -761,6 +774,7 @@ document.write(`
   </div>
   </div></div>
 </div>
+<p>metode describe() pada objek dataframe data untuk menghasilkan ringkasan statistik dari dataset.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_norm</span> <span class="o">=</span> <span class="n">data</span><span class="p">[[</span><span class="s1">&#39;SepalLengthCm&#39;</span><span class="p">,</span> <span class="s1">&#39;SepalWidthCm&#39;</span><span class="p">,</span> <span class="s1">&#39;PetalLengthCm&#39;</span><span class="p">,</span> <span class="s1">&#39;PetalWidthCm&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">x</span><span class="o">.</span><span class="n">min</span><span class="p">())</span> <span class="o">/</span> <span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">-</span> <span class="n">x</span><span class="o">.</span><span class="n">min</span><span class="p">()))</span>
@@ -770,7 +784,7 @@ document.write(`
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-7923325a-5395-427f-ad09-80d08b1fdf6f">
+  <div id="df-f79e1162-a46b-4e72-be54-ccda927072c8">
     <div class="colab-df-container">
       <div>
 <style scoped>
@@ -798,25 +812,25 @@ document.write(`
   </thead>
   <tbody>
     <tr>
-      <th>106</th>
-      <td>0.166667</td>
-      <td>0.208333</td>
-      <td>0.593220</td>
-      <td>0.666667</td>
+      <th>8</th>
+      <td>0.027778</td>
+      <td>0.375000</td>
+      <td>0.067797</td>
+      <td>0.041667</td>
     </tr>
     <tr>
-      <th>37</th>
-      <td>0.166667</td>
-      <td>0.458333</td>
-      <td>0.084746</td>
-      <td>0.000000</td>
-    </tr>
-    <tr>
-      <th>87</th>
-      <td>0.555556</td>
-      <td>0.125000</td>
-      <td>0.576271</td>
+      <th>47</th>
+      <td>0.083333</td>
       <td>0.500000</td>
+      <td>0.067797</td>
+      <td>0.041667</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>0.388889</td>
+      <td>0.750000</td>
+      <td>0.118644</td>
+      <td>0.083333</td>
     </tr>
     <tr>
       <th>79</th>
@@ -826,16 +840,16 @@ document.write(`
       <td>0.375000</td>
     </tr>
     <tr>
-      <th>105</th>
-      <td>0.916667</td>
+      <th>25</th>
+      <td>0.194444</td>
       <td>0.416667</td>
-      <td>0.949153</td>
-      <td>0.833333</td>
+      <td>0.101695</td>
+      <td>0.041667</td>
     </tr>
   </tbody>
 </table>
 </div>
-      <button class="colab-df-convert" onclick="convertToInteractive('df-7923325a-5395-427f-ad09-80d08b1fdf6f')"
+      <button class="colab-df-convert" onclick="convertToInteractive('df-f79e1162-a46b-4e72-be54-ccda927072c8')"
               title="Convert this dataframe to an interactive table."
               style="display:none;">
         
@@ -886,12 +900,12 @@ document.write(`
 
       <script>
         const buttonEl =
-          document.querySelector('#df-7923325a-5395-427f-ad09-80d08b1fdf6f button.colab-df-convert');
+          document.querySelector('#df-f79e1162-a46b-4e72-be54-ccda927072c8 button.colab-df-convert');
         buttonEl.style.display =
           google.colab.kernel.accessAllowed ? 'block' : 'none';
 
         async function convertToInteractive(key) {
-          const element = document.querySelector('#df-7923325a-5395-427f-ad09-80d08b1fdf6f');
+          const element = document.querySelector('#df-f79e1162-a46b-4e72-be54-ccda927072c8');
           const dataTable =
             await google.colab.kernel.invokeFunction('convertToInteractive',
                                                      [key], {});
@@ -912,6 +926,12 @@ document.write(`
   </div>
   </div></div>
 </div>
+<p>melakukan normalisasi data pada kolom-kolom numerik (SepalLengthCm, SepalWidthCm, PetalLengthCm, dan PetalWidthCm) dari dataframe data.</p>
+<p>df_norm adalah variabel yang digunakan untuk menyimpan dataframe hasil normalisasi.</p>
+<p>data[[‘SepalLengthCm’, ‘SepalWidthCm’, ‘PetalLengthCm’, ‘PetalWidthCm’]] digunakan untuk memilih kolom-kolom yang ingin dinormalisasi dari dataframe data. Ini menghasilkan sebuah dataframe baru yang terdiri dari kolom-kolom yang dipilih.</p>
+<p>Metode apply() digunakan untuk menerapkan fungsi lambda ke setiap kolom dalam dataframe yang dipilih. Fungsi lambda ini menghitung nilai normalisasi dengan mengurangi nilai minimum dalam kolom dan membaginya dengan selisih antara nilai maksimum dan nilai minimum dalam kolom tersebut.</p>
+<p>(x - x.min()) / (x.max() - x.min()) adalah fungsi lambda yang diterapkan pada setiap kolom. x mewakili setiap kolom. Rumus (x - x.min()) / (x.max() - x.min()) menghitung nilai normalisasi dengan meminimumkan nilai dalam kolom menjadi 0 dan memaksimumkan nilainya menjadi 1.</p>
+<p>df_norm.sample(n=5) digunakan untuk mengambil 5 baris acak dari dataframe df_norm yang telah dinormalisasi. Ini berguna untuk melihat contoh-contoh data yang telah dinormalisasi.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_norm</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
@@ -920,7 +940,7 @@ document.write(`
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-d49ac716-5096-498c-b1e1-15cf68a0b941">
+  <div id="df-1fe52d28-c83c-41a6-9885-22d97d529a6a">
     <div class="colab-df-container">
       <div>
 <style scoped>
@@ -1006,7 +1026,7 @@ document.write(`
   </tbody>
 </table>
 </div>
-      <button class="colab-df-convert" onclick="convertToInteractive('df-d49ac716-5096-498c-b1e1-15cf68a0b941')"
+      <button class="colab-df-convert" onclick="convertToInteractive('df-1fe52d28-c83c-41a6-9885-22d97d529a6a')"
               title="Convert this dataframe to an interactive table."
               style="display:none;">
         
@@ -1057,12 +1077,12 @@ document.write(`
 
       <script>
         const buttonEl =
-          document.querySelector('#df-d49ac716-5096-498c-b1e1-15cf68a0b941 button.colab-df-convert');
+          document.querySelector('#df-1fe52d28-c83c-41a6-9885-22d97d529a6a button.colab-df-convert');
         buttonEl.style.display =
           google.colab.kernel.accessAllowed ? 'block' : 'none';
 
         async function convertToInteractive(key) {
-          const element = document.querySelector('#df-d49ac716-5096-498c-b1e1-15cf68a0b941');
+          const element = document.querySelector('#df-1fe52d28-c83c-41a6-9885-22d97d529a6a');
           const dataTable =
             await google.colab.kernel.invokeFunction('convertToInteractive',
                                                      [key], {});
@@ -1083,6 +1103,9 @@ document.write(`
   </div>
   </div></div>
 </div>
+<p>metode describe() pada objek dataframe df_norm untuk menghasilkan ringkasan statistik dari dataset yang telah dinormalisasi.</p>
+<p>Fungsi describe() memberikan informasi statistik seperti jumlah data (count), rata-rata (mean), standar deviasi (std), nilai minimum (min), kuartil pertama (25%), median (50% atau kuartil kedua), kuartil ketiga (75%), dan nilai maksimum (max) untuk setiap kolom numerik dalam dataframe yang telah dinormalisasi.</p>
+<p>Dengan menjalankan code tersebut, akan ditampilkan ringkasan statistik untuk setiap kolom numerik dalam dataframe df_norm. Informasi ini berguna untuk melihat perubahan setelah normalisasi dilakukan, serta memastikan bahwa nilai-nilai dalam dataset telah dinormalisasi dengan benar.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">target</span> <span class="o">=</span> <span class="n">data</span><span class="p">[[</span><span class="s1">&#39;Species&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">replace</span><span class="p">([</span><span class="s1">&#39;Iris-setosa&#39;</span><span class="p">,</span><span class="s1">&#39;Iris-versicolor&#39;</span><span class="p">,</span><span class="s1">&#39;Iris-virginica&#39;</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
@@ -1092,7 +1115,7 @@ document.write(`
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-d5fa312c-95d8-4cfa-b7b9-5e790eb263d5">
+  <div id="df-920422eb-94ce-4ba5-a014-7132bd5d5623">
     <div class="colab-df-container">
       <div>
 <style scoped>
@@ -1117,29 +1140,29 @@ document.write(`
   </thead>
   <tbody>
     <tr>
-      <th>51</th>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>56</th>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>134</th>
+      <th>120</th>
       <td>2</td>
     </tr>
     <tr>
-      <th>70</th>
+      <th>105</th>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>55</th>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>132</th>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>73</th>
       <td>1</td>
     </tr>
   </tbody>
 </table>
 </div>
-      <button class="colab-df-convert" onclick="convertToInteractive('df-d5fa312c-95d8-4cfa-b7b9-5e790eb263d5')"
+      <button class="colab-df-convert" onclick="convertToInteractive('df-920422eb-94ce-4ba5-a014-7132bd5d5623')"
               title="Convert this dataframe to an interactive table."
               style="display:none;">
         
@@ -1190,12 +1213,12 @@ document.write(`
 
       <script>
         const buttonEl =
-          document.querySelector('#df-d5fa312c-95d8-4cfa-b7b9-5e790eb263d5 button.colab-df-convert');
+          document.querySelector('#df-920422eb-94ce-4ba5-a014-7132bd5d5623 button.colab-df-convert');
         buttonEl.style.display =
           google.colab.kernel.accessAllowed ? 'block' : 'none';
 
         async function convertToInteractive(key) {
-          const element = document.querySelector('#df-d5fa312c-95d8-4cfa-b7b9-5e790eb263d5');
+          const element = document.querySelector('#df-920422eb-94ce-4ba5-a014-7132bd5d5623');
           const dataTable =
             await google.colab.kernel.invokeFunction('convertToInteractive',
                                                      [key], {});
@@ -1216,6 +1239,14 @@ document.write(`
   </div>
   </div></div>
 </div>
+<p>melakukan penggantian nilai pada kolom ‘Species’ dari dataframe data dengan nilai-nilai baru yang digunakan sebagai target atau label dalam pembuatan model.</p>
+<p>target adalah variabel yang digunakan untuk menyimpan dataframe hasil penggantian nilai.
+data[[‘Species’]] digunakan untuk memilih kolom ‘Species’ dari dataframe data. Ini menghasilkan sebuah dataframe baru yang hanya terdiri dari kolom ‘Species’.</p>
+<p>Metode replace() digunakan untuk menggantikan nilai-nilai dalam kolom ‘Species’ dengan nilai baru. Nilai-nilai yang diganti adalah ‘Iris-setosa’, ‘Iris-versicolor’, dan ‘Iris-virginica’, yang digantikan dengan nilai 0, 1, dan 2 masing-masing.</p>
+<p>[0,1,2] adalah daftar nilai baru yang akan digunakan untuk menggantikan nilai lama. Urutan nilai baru sesuai dengan urutan nilai lama yang akan digantikan.</p>
+<p>target.sample(n=5) digunakan untuk mengambil 5 baris acak dari dataframe target. Ini berguna untuk melihat contoh-contoh data target setelah nilai-nilai lama digantikan.</p>
+<p>Dengan menjalankan code tersebut, akan dihasilkan dataframe target yang berisi kolom ‘Species’ yang telah digantikan nilainya dengan nilai baru yang digunakan sebagai target atau label dalam pembuatan model. Contoh-contoh data target yang telah digantikan nilainya juga ditampilkan.</p>
+<p>dataframe target yang berisi kolom ‘Species’ yang telah digantikan nilainya dengan nilai baru yang digunakan sebagai target atau label dalam pembuatan model. Contoh-contoh data target yang telah digantikan nilainya juga ditampilkan.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df_norm</span><span class="p">,</span> <span class="n">target</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
@@ -1225,7 +1256,7 @@ document.write(`
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-9a0f3205-d80a-4d9f-9a5b-e7d86d70072a">
+  <div id="df-3ad67c80-c2ee-45eb-a45a-91192ed56573">
     <div class="colab-df-container">
       <div>
 <style scoped>
@@ -1254,49 +1285,49 @@ document.write(`
   </thead>
   <tbody>
     <tr>
-      <th>8</th>
-      <td>0.027778</td>
-      <td>0.375000</td>
-      <td>0.067797</td>
-      <td>0.041667</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>119</th>
-      <td>0.472222</td>
-      <td>0.083333</td>
-      <td>0.677966</td>
-      <td>0.583333</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <th>142</th>
-      <td>0.416667</td>
+      <th>94</th>
+      <td>0.361111</td>
       <td>0.291667</td>
-      <td>0.694915</td>
-      <td>0.750000</td>
-      <td>2</td>
-    </tr>
-    <tr>
-      <th>99</th>
-      <td>0.388889</td>
-      <td>0.333333</td>
-      <td>0.525424</td>
+      <td>0.542373</td>
       <td>0.500000</td>
       <td>1</td>
     </tr>
     <tr>
-      <th>31</th>
-      <td>0.305556</td>
+      <th>39</th>
+      <td>0.222222</td>
       <td>0.583333</td>
       <td>0.084746</td>
-      <td>0.125000</td>
+      <td>0.041667</td>
       <td>0</td>
+    </tr>
+    <tr>
+      <th>95</th>
+      <td>0.388889</td>
+      <td>0.416667</td>
+      <td>0.542373</td>
+      <td>0.458333</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>121</th>
+      <td>0.361111</td>
+      <td>0.333333</td>
+      <td>0.661017</td>
+      <td>0.791667</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>125</th>
+      <td>0.805556</td>
+      <td>0.500000</td>
+      <td>0.847458</td>
+      <td>0.708333</td>
+      <td>2</td>
     </tr>
   </tbody>
 </table>
 </div>
-      <button class="colab-df-convert" onclick="convertToInteractive('df-9a0f3205-d80a-4d9f-9a5b-e7d86d70072a')"
+      <button class="colab-df-convert" onclick="convertToInteractive('df-3ad67c80-c2ee-45eb-a45a-91192ed56573')"
               title="Convert this dataframe to an interactive table."
               style="display:none;">
         
@@ -1347,12 +1378,12 @@ document.write(`
 
       <script>
         const buttonEl =
-          document.querySelector('#df-9a0f3205-d80a-4d9f-9a5b-e7d86d70072a button.colab-df-convert');
+          document.querySelector('#df-3ad67c80-c2ee-45eb-a45a-91192ed56573 button.colab-df-convert');
         buttonEl.style.display =
           google.colab.kernel.accessAllowed ? 'block' : 'none';
 
         async function convertToInteractive(key) {
-          const element = document.querySelector('#df-9a0f3205-d80a-4d9f-9a5b-e7d86d70072a');
+          const element = document.querySelector('#df-3ad67c80-c2ee-45eb-a45a-91192ed56573');
           const dataTable =
             await google.colab.kernel.invokeFunction('convertToInteractive',
                                                      [key], {});
@@ -1373,6 +1404,13 @@ document.write(`
   </div>
   </div></div>
 </div>
+<p>menggabungkan dataframe df_norm yang telah dinormalisasi dengan dataframe target yang berisi nilai target atau label yang telah diganti.</p>
+<p>df adalah variabel yang digunakan untuk menyimpan dataframe hasil penggabungan.
+pd.concat() adalah fungsi dari library pandas yang digunakan untuk menggabungkan dataframes secara berdampingan atau berdampingan secara vertikal.
+[df_norm, target] adalah daftar dataframe yang akan digabungkan. Dalam hal ini, df_norm adalah dataframe pertama yang akan digabungkan, dan target adalah dataframe kedua yang akan digabungkan.
+axis=1 digunakan untuk mengindikasikan bahwa penggabungan dilakukan secara berdampingan (horisontal), yaitu dengan menggabungkan kolom-kolom dari kedua dataframe.
+df.sample(n=5) digunakan untuk mengambil 5 baris acak dari dataframe df. Ini berguna untuk melihat contoh-contoh data setelah dilakukan penggabungan.
+Dengan menjalankan code tersebut, akan dihasilkan dataframe df yang berisi kolom-kolom dari df_norm yang telah dinormalisasi dan kolom ‘Species’ dari target yang berisi nilai target atau label yang telah diganti.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">train</span><span class="p">,</span> <span class="n">test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">test_size</span> <span class="o">=</span> <span class="mf">0.3</span><span class="p">)</span>
@@ -1386,7 +1424,7 @@ document.write(`
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-2cdfe9e4-c8ea-435c-a7e7-d9ab64d94292">
+  <div id="df-459f9b07-f63e-4da6-adc6-fb5ff6e8ec51">
     <div class="colab-df-container">
       <div>
 <style scoped>
@@ -1414,44 +1452,44 @@ document.write(`
   </thead>
   <tbody>
     <tr>
-      <th>125</th>
-      <td>0.805556</td>
-      <td>0.500000</td>
-      <td>0.847458</td>
-      <td>0.708333</td>
+      <th>67</th>
+      <td>0.416667</td>
+      <td>0.291667</td>
+      <td>0.525424</td>
+      <td>0.375000</td>
     </tr>
     <tr>
-      <th>75</th>
-      <td>0.638889</td>
+      <th>27</th>
+      <td>0.250000</td>
+      <td>0.625000</td>
+      <td>0.084746</td>
+      <td>0.041667</td>
+    </tr>
+    <tr>
+      <th>91</th>
+      <td>0.500000</td>
       <td>0.416667</td>
-      <td>0.576271</td>
+      <td>0.610169</td>
       <td>0.541667</td>
     </tr>
     <tr>
-      <th>103</th>
-      <td>0.555556</td>
-      <td>0.375000</td>
-      <td>0.779661</td>
-      <td>0.708333</td>
+      <th>31</th>
+      <td>0.305556</td>
+      <td>0.583333</td>
+      <td>0.084746</td>
+      <td>0.125000</td>
     </tr>
     <tr>
-      <th>141</th>
-      <td>0.722222</td>
-      <td>0.458333</td>
-      <td>0.694915</td>
-      <td>0.916667</td>
-    </tr>
-    <tr>
-      <th>38</th>
-      <td>0.027778</td>
-      <td>0.416667</td>
-      <td>0.050847</td>
-      <td>0.041667</td>
+      <th>6</th>
+      <td>0.083333</td>
+      <td>0.583333</td>
+      <td>0.067797</td>
+      <td>0.083333</td>
     </tr>
   </tbody>
 </table>
 </div>
-      <button class="colab-df-convert" onclick="convertToInteractive('df-2cdfe9e4-c8ea-435c-a7e7-d9ab64d94292')"
+      <button class="colab-df-convert" onclick="convertToInteractive('df-459f9b07-f63e-4da6-adc6-fb5ff6e8ec51')"
               title="Convert this dataframe to an interactive table."
               style="display:none;">
         
@@ -1502,12 +1540,12 @@ document.write(`
 
       <script>
         const buttonEl =
-          document.querySelector('#df-2cdfe9e4-c8ea-435c-a7e7-d9ab64d94292 button.colab-df-convert');
+          document.querySelector('#df-459f9b07-f63e-4da6-adc6-fb5ff6e8ec51 button.colab-df-convert');
         buttonEl.style.display =
           google.colab.kernel.accessAllowed ? 'block' : 'none';
 
         async function convertToInteractive(key) {
-          const element = document.querySelector('#df-2cdfe9e4-c8ea-435c-a7e7-d9ab64d94292');
+          const element = document.querySelector('#df-459f9b07-f63e-4da6-adc6-fb5ff6e8ec51');
           const dataTable =
             await google.colab.kernel.invokeFunction('convertToInteractive',
                                                      [key], {});
@@ -1528,6 +1566,14 @@ document.write(`
   </div>
   </div></div>
 </div>
+<p>melakukan pemisahan data menjadi subset pelatihan dan pengujian menggunakan fungsi train_test_split dari library sklearn.model_selection. Selanjutnya, code tersebut mengambil fitur-fitur (kolom-kolom) yang akan digunakan sebagai input (X) dari data pelatihan dan pengujian, serta mengambil nilai target (Y) dari data pelatihan dan pengujian.</p>
+<p>train, test = train_test_split(df, test_size = 0.3) memisahkan dataframe df menjadi subset pelatihan (train) dan subset pengujian (test) dengan rasio 70:30. test_size = 0.3 mengindikasikan bahwa 30% dari data akan digunakan sebagai data pengujian.
+trainX = train[[‘SepalLengthCm’,’SepalWidthCm’,’PetalLengthCm’,’PetalWidthCm’]] mengambil kolom-kolom ‘SepalLengthCm’, ‘SepalWidthCm’, ‘PetalLengthCm’, dan ‘PetalWidthCm’ sebagai fitur-fitur (X) dari data pelatihan.
+trainY=train.Species mengambil kolom ‘Species’ sebagai nilai target (Y) dari data pelatihan.
+testX= test[[‘SepalLengthCm’,’SepalWidthCm’,’PetalLengthCm’,’PetalWidthCm’]] mengambil kolom-kolom ‘SepalLengthCm’, ‘SepalWidthCm’, ‘PetalLengthCm’, dan ‘PetalWidthCm’ sebagai fitur-fitur (X) dari data pengujian.
+testY =test.Species mengambil kolom ‘Species’ sebagai nilai target (Y) dari data pengujian.
+trainX.head(5) menampilkan 5 baris pertama dari dataframe trainX.
+Dengan menjalankan code tersebut, akan dihasilkan dataframe trainX yang berisi fitur-fitur dari data pelatihan (5 baris pertama ditampilkan).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">trainY</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
@@ -1535,11 +1581,11 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>125    2
-75     1
-103    2
-141    2
-38     0
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>67    1
+27    0
+91    1
+31    0
+6     0
 Name: Species, dtype: int64
 </pre></div>
 </div>
@@ -1553,7 +1599,7 @@ Name: Species, dtype: int64
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-c83e4eaf-7709-4d15-b68e-65673b78d120">
+  <div id="df-ae9ef4ed-668c-4aaa-9378-d1330c5d5e4d">
     <div class="colab-df-container">
       <div>
 <style scoped>
@@ -1581,44 +1627,44 @@ Name: Species, dtype: int64
   </thead>
   <tbody>
     <tr>
-      <th>83</th>
-      <td>0.472222</td>
+      <th>142</th>
+      <td>0.416667</td>
       <td>0.291667</td>
       <td>0.694915</td>
-      <td>0.625000</td>
+      <td>0.750000</td>
     </tr>
     <tr>
-      <th>49</th>
-      <td>0.194444</td>
-      <td>0.541667</td>
-      <td>0.067797</td>
-      <td>0.041667</td>
-    </tr>
-    <tr>
-      <th>105</th>
-      <td>0.916667</td>
-      <td>0.416667</td>
-      <td>0.949153</td>
-      <td>0.833333</td>
-    </tr>
-    <tr>
-      <th>39</th>
+      <th>17</th>
       <td>0.222222</td>
+      <td>0.625000</td>
+      <td>0.067797</td>
+      <td>0.083333</td>
+    </tr>
+    <tr>
+      <th>82</th>
+      <td>0.416667</td>
+      <td>0.291667</td>
+      <td>0.491525</td>
+      <td>0.458333</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>0.194444</td>
       <td>0.583333</td>
       <td>0.084746</td>
       <td>0.041667</td>
     </tr>
     <tr>
-      <th>57</th>
-      <td>0.166667</td>
-      <td>0.166667</td>
-      <td>0.389831</td>
-      <td>0.375000</td>
+      <th>44</th>
+      <td>0.222222</td>
+      <td>0.750000</td>
+      <td>0.152542</td>
+      <td>0.125000</td>
     </tr>
   </tbody>
 </table>
 </div>
-      <button class="colab-df-convert" onclick="convertToInteractive('df-c83e4eaf-7709-4d15-b68e-65673b78d120')"
+      <button class="colab-df-convert" onclick="convertToInteractive('df-ae9ef4ed-668c-4aaa-9378-d1330c5d5e4d')"
               title="Convert this dataframe to an interactive table."
               style="display:none;">
         
@@ -1669,12 +1715,12 @@ Name: Species, dtype: int64
 
       <script>
         const buttonEl =
-          document.querySelector('#df-c83e4eaf-7709-4d15-b68e-65673b78d120 button.colab-df-convert');
+          document.querySelector('#df-ae9ef4ed-668c-4aaa-9378-d1330c5d5e4d button.colab-df-convert');
         buttonEl.style.display =
           google.colab.kernel.accessAllowed ? 'block' : 'none';
 
         async function convertToInteractive(key) {
-          const element = document.querySelector('#df-c83e4eaf-7709-4d15-b68e-65673b78d120');
+          const element = document.querySelector('#df-ae9ef4ed-668c-4aaa-9378-d1330c5d5e4d');
           const dataTable =
             await google.colab.kernel.invokeFunction('convertToInteractive',
                                                      [key], {});
@@ -1695,6 +1741,9 @@ Name: Species, dtype: int64
   </div>
   </div></div>
 </div>
+<p>menampilkan 5 baris pertama dari dataframe testX, yang berisi fitur-fitur (kolom-kolom) dari data pengujian.</p>
+<p>testX.head(5) menampilkan 5 baris pertama dari dataframe testX.
+Dengan menjalankan code tersebut, akan ditampilkan 5 baris pertama dari dataframe</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clf</span> <span class="o">=</span> <span class="n">MLPClassifier</span><span class="p">(</span><span class="n">solver</span><span class="o">=</span><span class="s1">&#39;lbfgs&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">1e-5</span><span class="p">,</span> <span class="n">hidden_layer_sizes</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
@@ -1702,6 +1751,11 @@ Name: Species, dtype: int64
 </div>
 </div>
 </div>
+<p>membuat objek clf yang merupakan model jaringan saraf tiruan (Multilayer Perceptron) menggunakan kelas MLPClassifier dari library sklearn.neural_network.</p>
+<p>solver=’lbfgs’ merupakan parameter yang menentukan algoritma yang digunakan untuk mengoptimasi bobot jaringan. Dalam hal ini, algoritma lbfgs dipilih.
+alpha=1e-5 merupakan parameter yang mengatur parameter regularisasi yang mengendalikan kompleksitas model. Nilai yang lebih tinggi akan mengurangi overfitting. Dalam hal ini, nilai 1e-5 (0.00001) dipilih.
+hidden_layer_sizes=(3, 3) merupakan parameter yang menentukan struktur jaringan saraf tiruan. Dalam hal ini, model memiliki dua lapisan tersembunyi, masing-masing dengan 3 neuron.
+random_state=1 merupakan parameter yang menentukan seed atau nilai awal untuk generator angka acak. Hal ini memastikan reproduktibilitas hasil yang sama setiap kali model dijalankan.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">trainX</span><span class="p">,</span> <span class="n">trainY</span><span class="p">)</span>
@@ -1713,6 +1767,11 @@ Name: Species, dtype: int64
               solver=&#x27;lbfgs&#x27;)</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-1" type="checkbox" checked><label for="sk-estimator-id-1" class="sk-toggleable__label sk-toggleable__label-arrow">MLPClassifier</label><div class="sk-toggleable__content"><pre>MLPClassifier(alpha=1e-05, hidden_layer_sizes=(3, 3), random_state=1,
               solver=&#x27;lbfgs&#x27;)</pre></div></div></div></div></div></div></div>
 </div>
+<p>duplikasi dari perintah sebelumnya clf.fit(trainX, trainY) yang digunakan untuk melatih model jaringan saraf tiruan (clf) dengan menggunakan data pelatihan.</p>
+<p>clf.fit(trainX, trainY) adalah metode yang digunakan untuk melatih model dengan memasukkan fitur-fitur trainX (data pelatihan) dan nilai target trainY (label pelatihan).
+Dengan menjalankan code ini, model akan belajar dari data pelatihan dan mengoptimalkan bobot-bobotnya berdasarkan algoritma optimisasi yang ditentukan saat inisialisasi model.
+Proses pelatihan memungkinkan model untuk mempelajari pola dan hubungan antara fitur-fitur dan nilai target dalam data pelatihan.
+Setelah pelatihan selesai, model akan dapat digunakan untuk melakukan prediksi pada data pengujian atau data baru.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">prediction</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">testX</span><span class="p">)</span>
@@ -1721,12 +1780,16 @@ Name: Species, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[2 0 2 0 1 2 2 1 1 0 0 0 0 1 0 2 0 2 2 1 0 0 2 1 0 0 2 2 0 2 0 2 2 2 1 2 2
- 1 2 2 0 2 0 1 1]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[2 0 1 0 0 0 2 2 2 1 2 2 1 0 2 2 1 1 2 0 2 2 2 2 2 2 1 0 2 0 2 2 1 1 1 2 1
+ 2 2 1 0 1 0 0 0]
 </pre></div>
 </div>
 </div>
 </div>
+<p>melakukan prediksi menggunakan model jaringan saraf tiruan (clf) yang telah dilatih sebelumnya pada data pengujian (testX).</p>
+<p>prediction = clf.predict(testX) digunakan untuk melakukan prediksi nilai target menggunakan model clf pada data pengujian testX. Metode predict() digunakan untuk memperoleh prediksi nilai target berdasarkan fitur-fitur dari data pengujian.
+Hasil prediksi akan disimpan dalam variabel prediction.
+print(prediction) digunakan untuk mencetak hasil prediksi ke layar.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">testY</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
@@ -1734,12 +1797,16 @@ Name: Species, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1 0 2 0 1 2 2 1 1 0 0 0 0 1 0 2 0 2 2 1 0 0 2 1 0 0 2 1 0 1 0 2 2 2 1 2 2
- 1 2 2 0 1 0 1 1]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[2 0 1 0 0 0 2 2 1 1 2 2 1 0 2 2 1 1 2 0 2 2 2 2 2 2 1 0 1 0 2 2 1 1 1 2 1
+ 2 2 1 0 1 0 0 0]
 </pre></div>
 </div>
 </div>
 </div>
+<p>mencetak nilai target aktual dari data pengujian (testY) ke layar.</p>
+<p>testY.values digunakan untuk mengakses nilai-nilai target dari data pengujian sebagai array atau Seri. Metode values digunakan untuk mengambil nilai-nilai aktual dari Seri atau dataframe.
+print(testY.values) digunakan untuk mencetak nilai-nilai target aktual ke layar.
+Dengan menjalankan code tersebut, akan ditampilkan nilai-nilai target aktual dari data pengujian (testY) ke layar. Ini memungkinkan kita untuk membandingkan hasil prediksi dengan nilai-nilai aktual untuk mengevaluasi kinerja model.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The accuracy of the Multi-layer Perceptron is:&#39;</span><span class="p">,</span><span class="n">metrics</span><span class="o">.</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">prediction</span><span class="p">,</span><span class="n">testY</span><span class="p">))</span>
@@ -1747,11 +1814,16 @@ Name: Species, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The accuracy of the Multi-layer Perceptron is: 0.9111111111111111
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The accuracy of the Multi-layer Perceptron is: 0.9555555555555556
 </pre></div>
 </div>
 </div>
 </div>
+<p>mencetak akurasi (accuracy) dari model jaringan saraf tiruan (Multi-layer Perceptron) ke layar.</p>
+<p>metrics.accuracy_score(prediction,testY) digunakan untuk menghitung akurasi model dengan membandingkan nilai prediksi (prediction) dengan nilai target aktual (testY). Fungsi accuracy_score() dari library sklearn.metrics digunakan untuk menghitung akurasi dengan membandingkan prediksi dengan nilai target aktual.
+‘The accuracy of the Multi-layer Perceptron is:’ digunakan sebagai string untuk memberikan keterangan pada output yang akan dicetak.
+print(‘The accuracy of the Multi-layer Perceptron is:’,metrics.accuracy_score(prediction,testY)) digunakan untuk mencetak akurasi model ke layar.
+Dengan menjalankan code tersebut, akan ditampilkan akurasi dari model jaringan saraf tiruan (Multi-layer Perceptron) yang telah dihitung berdasarkan perbandingan prediksi dengan nilai target aktual (testY). Akurasi adalah ukuran yang mengindikasikan sejauh mana model dapat melakukan prediksi dengan benar pada data pengujian.</p>
 </div>
 
     <script type="text/x-thebe-config">
