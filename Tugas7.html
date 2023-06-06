@@ -359,15 +359,17 @@ document.write(`
                   
   <div class="tex2jax_ignore mathjax_ignore section" id="tugas-7-pca-with-iris-dataset">
 <h1>TUGAS 7 : PCA with iris dataset<a class="headerlink" href="#tugas-7-pca-with-iris-dataset" title="Permalink to this heading">#</a></h1>
-<p>PCA menemukan komponen utama data.</p>
-<p>Seringkali berguna untuk mengukur data dalam hal komponen utamanya daripada pada sumbu x-y normal. Jadi apa komponen utama itu? Mereka adalah struktur dasar dalam data. Mereka adalah arah di mana terdapat varian paling banyak, arah di mana data paling tersebar.</p>
-<p>PCA menemukan satu set dimensi baru (atau satu set basis pandangan) sedemikian rupa sehingga semua dimensi adalah ortogonal (dan karenanya bebas linier) dan diberi peringkat sesuai dengan varians data di sepanjang dimensi tersebut. Artinya sumbu prinsip yang lebih penting terjadi lebih dulu. (lebih penting = lebih banyak variasi/lebih banyak data tersebar)
-Bagaimana cara kerja PCA -</p>
-<p>Hitung matriks kovarians X dari titik data.
-Hitung vektor eigen dan nilai eigen yang sesuai.
-Urutkan vektor eigen menurut nilai eigennya dalam urutan menurun.
-Pilih vektor k eigen pertama dan itu akan menjadi dimensi k baru.
-Ubah titik data n dimensi asli menjadi k dimensi.</p>
+<p>PCA (Principal Component Analysis) adalah suatu metode statistik yang digunakan untuk menganalisis dan mengurangi dimensi dari kumpulan data yang kompleks. Tujuan utama dari PCA adalah mengidentifikasi pola atau struktur yang tersembunyi dalam data dengan mengubah variabel yang saling berkorelasi menjadi variabel yang saling bebas (tidak berkorelasi).</p>
+<p>Dalam PCA, kita mencari kombinasi linear baru dari variabel awal yang dikenal sebagai komponen utama. Komponen utama ini diurutkan berdasarkan jumlah variansi yang dijelaskan oleh masing-masing komponen. Komponen pertama menjelaskan sebanyak mungkin variansi dalam data, yang diikuti oleh komponen kedua, dan seterusnya. Dengan mempertimbangkan sejumlah komponen utama tertentu, kita dapat mengurangi dimensi data tanpa kehilangan banyak informasi penting.</p>
+<p>Langkah-langkah dalam melakukan PCA meliputi:</p>
+<ol class="arabic simple">
+<li><p>Standarisasi Data: Menyamakan skala dari setiap variabel agar memiliki mean 0 dan simpangan baku 1. Hal ini dilakukan agar variabel yang memiliki skala yang berbeda tidak mendominasi hasil PCA.</p></li>
+<li><p>Menghitung Matriks Kovarians: Matriks kovarians digunakan untuk mengukur hubungan linier antara variabel-variabel dalam data.</p></li>
+<li><p>Menghitung Vektor Eigen: Vektor eigen (atau vektor utama) dan nilai eigen (atau nilai utama) dihitung dari matriks kovarians. Vektor eigen adalah vektor yang menggambarkan arah dan nilai-nilai penting dari komponen utama.</p></li>
+<li><p>Mengurutkan Komponen Utama: Komponen utama diurutkan berdasarkan nilai eigen mereka sehingga komponen dengan nilai eigen terbesar muncul pertama. Komponen utama yang memiliki nilai eigen besar menjelaskan variansi yang lebih tinggi dalam data.</p></li>
+<li><p>Mengurangi Dimensi: Memilih sejumlah komponen utama tertentu yang ingin dipertahankan dan menghapus komponen yang kurang signifikan. Dengan mengurangi dimensi, kita dapat mewakili data secara lebih sederhana namun tetap mempertahankan sebagian besar informasi yang penting.</p></li>
+</ol>
+<p>PCA memiliki berbagai aplikasi dalam berbagai bidang seperti analisis data, pengenalan pola, kompresi data, pengolahan citra, dan masih banyak lagi. Dengan menggunakan PCA, kita dapat memahami struktur data yang kompleks, mengidentifikasi variabel yang paling penting, dan mempermudah analisis lebih lanjut.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span> <span class="c1"># linear algebra</span>
@@ -428,7 +430,7 @@ memory usage: 7.0+ KB
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-eb9a42c6-230b-4045-b72e-7590d9b09620">
+  <div id="df-74c4395a-13cb-48e0-85da-74c7fb76a545">
     <div class="colab-df-container">
       <div>
 <style scoped>
@@ -514,7 +516,7 @@ memory usage: 7.0+ KB
   </tbody>
 </table>
 </div>
-      <button class="colab-df-convert" onclick="convertToInteractive('df-eb9a42c6-230b-4045-b72e-7590d9b09620')"
+      <button class="colab-df-convert" onclick="convertToInteractive('df-74c4395a-13cb-48e0-85da-74c7fb76a545')"
               title="Convert this dataframe to an interactive table."
               style="display:none;">
         
@@ -565,12 +567,12 @@ memory usage: 7.0+ KB
 
       <script>
         const buttonEl =
-          document.querySelector('#df-eb9a42c6-230b-4045-b72e-7590d9b09620 button.colab-df-convert');
+          document.querySelector('#df-74c4395a-13cb-48e0-85da-74c7fb76a545 button.colab-df-convert');
         buttonEl.style.display =
           google.colab.kernel.accessAllowed ? 'block' : 'none';
 
         async function convertToInteractive(key) {
-          const element = document.querySelector('#df-eb9a42c6-230b-4045-b72e-7590d9b09620');
+          const element = document.querySelector('#df-74c4395a-13cb-48e0-85da-74c7fb76a545');
           const dataTable =
             await google.colab.kernel.invokeFunction('convertToInteractive',
                                                      [key], {});
@@ -599,7 +601,7 @@ memory usage: 7.0+ KB
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-fb6d03b5-2835-4119-b04b-4648283e272f">
+  <div id="df-47879f0d-0a11-4ac2-bd74-0df1b035385e">
     <div class="colab-df-container">
       <div>
 <style scoped>
@@ -678,7 +680,7 @@ memory usage: 7.0+ KB
   </tbody>
 </table>
 </div>
-      <button class="colab-df-convert" onclick="convertToInteractive('df-fb6d03b5-2835-4119-b04b-4648283e272f')"
+      <button class="colab-df-convert" onclick="convertToInteractive('df-47879f0d-0a11-4ac2-bd74-0df1b035385e')"
               title="Convert this dataframe to an interactive table."
               style="display:none;">
         
@@ -729,12 +731,12 @@ memory usage: 7.0+ KB
 
       <script>
         const buttonEl =
-          document.querySelector('#df-fb6d03b5-2835-4119-b04b-4648283e272f button.colab-df-convert');
+          document.querySelector('#df-47879f0d-0a11-4ac2-bd74-0df1b035385e button.colab-df-convert');
         buttonEl.style.display =
           google.colab.kernel.accessAllowed ? 'block' : 'none';
 
         async function convertToInteractive(key) {
-          const element = document.querySelector('#df-fb6d03b5-2835-4119-b04b-4648283e272f');
+          const element = document.querySelector('#df-47879f0d-0a11-4ac2-bd74-0df1b035385e');
           const dataTable =
             await google.colab.kernel.invokeFunction('convertToInteractive',
                                                      [key], {});
@@ -776,7 +778,7 @@ memory usage: 7.0+ KB
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html">
-  <div id="df-31f32897-0496-44d3-a565-1675cbd16ab6">
+  <div id="df-4af28abd-0eb5-41b8-a9d0-9e97e803c777">
     <div class="colab-df-container">
       <div>
 <style scoped>
@@ -855,7 +857,7 @@ memory usage: 7.0+ KB
   </tbody>
 </table>
 </div>
-      <button class="colab-df-convert" onclick="convertToInteractive('df-31f32897-0496-44d3-a565-1675cbd16ab6')"
+      <button class="colab-df-convert" onclick="convertToInteractive('df-4af28abd-0eb5-41b8-a9d0-9e97e803c777')"
               title="Convert this dataframe to an interactive table."
               style="display:none;">
         
@@ -906,12 +908,12 @@ memory usage: 7.0+ KB
 
       <script>
         const buttonEl =
-          document.querySelector('#df-31f32897-0496-44d3-a565-1675cbd16ab6 button.colab-df-convert');
+          document.querySelector('#df-4af28abd-0eb5-41b8-a9d0-9e97e803c777 button.colab-df-convert');
         buttonEl.style.display =
           google.colab.kernel.accessAllowed ? 'block' : 'none';
 
         async function convertToInteractive(key) {
-          const element = document.querySelector('#df-31f32897-0496-44d3-a565-1675cbd16ab6');
+          const element = document.querySelector('#df-4af28abd-0eb5-41b8-a9d0-9e97e803c777');
           const dataTable =
             await google.colab.kernel.invokeFunction('convertToInteractive',
                                                      [key], {});
